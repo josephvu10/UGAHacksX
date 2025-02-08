@@ -1,0 +1,33 @@
+.gen-container {
+    display: flex; 
+    margin: 50px auto 40px;
+    max-width: 500px;
+    position: relative;
+  }
+  .gen-container input[type="text"] {
+  width: 500px;
+  padding: 35px;
+  padding-right: 2em;
+  margin-bottom: 0px;
+  background-color: #121212;
+  border: 1px solid #FCFCFC;
+  border-radius: 4px;
+  color: #FCFCFC;
+  }
+  .gen-container input[type="text"]:hover {
+  border: 1px solid #4AAFBF;
+  border-radius: 4px;
+  color: #FCFCFC;
+  }
+  .gen-icon {
+    position: absolute;
+  top: 25px;
+  right: 20px; /* Adjust as needed */
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #fcfcfc;
+
+  }
+  .gen-icon:hover {
+    color: #4AAFBF; 
+  }
