@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const pinata = new PinataSDK({
   pinataJwt:  process.env.PINATA_JWT,
-  pinataGateway: "example-gateway.mypinata.cloud",
+  pinataGateway: "ugahacksx.mypinata.cloud",
 });
 
 async function main() {
