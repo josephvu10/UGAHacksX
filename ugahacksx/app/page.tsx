@@ -10,8 +10,8 @@ export default function Home() {
     router.push('pages/exampleUsage');
   };
 
-  const handleClickBlog = () => {
-    router.push('pages/blogHome');
+  const handleClickSongPosts = () => {
+    router.push('pages/songPosts');
   };
 
 
@@ -22,10 +22,9 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <button onClick={handleClick}>Go to Example Usage</button>
-      <button onClick={handleClickBlog}>Go to Blog</button> 
+      <button onClick={handleClickSongPosts}>Go to Blog</button> 
       <a href="/api/auth/login">Login</a>
       <a href="/api/auth/logout">Logout</a>
-
     </div>
   );
 }
