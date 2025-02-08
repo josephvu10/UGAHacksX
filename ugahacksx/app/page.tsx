@@ -16,12 +16,16 @@ export default function Home() {
 
 
   //we should make this the homepage with the slogan and make it similar to the Suno homepage
+  const khoaTest = () => {
+    router.push('/khoaTest');
+  }
   return (
     <div className={styles.page}>
       <button onClick={handleClick}>Go to Example Usage</button>
       <button onClick={handleClickBlog}>Go to Blog</button> 
       <a href="/api/auth/login">Login</a>
       <a href="/api/auth/logout">Logout</a>
+
     </div>
   );
 }
