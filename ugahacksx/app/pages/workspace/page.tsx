@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-'use client'
-
-export default function workspace() {
-  return (
-    <div>
-      <h1>My Workspace</h1>
-    </div>
-  );
-}
-=======
 "use client";
 
 import Card from "../Card"
@@ -35,4 +24,3 @@ export default function Workspace() {
     </div>
   );
 }
->>>>>>> origin/lauren
