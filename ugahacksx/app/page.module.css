@@ -1,6 +1,6 @@
 body {
-    height: 100%;
-    background-color: #f4f4f9;
+  height: 100px;
+  background-color: #f4f4f9;
 }
 
 .page {
@@ -10,7 +10,7 @@ body {
   }
   
   .button {
-    background-color: #afcad1;
+    background-color: #99cedb;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -29,7 +29,7 @@ body {
   }
 
   .button:hover {
-    background-color: #72a9b6;
+    background-color: #72c4d8;
     transform: scale(1.05);
   }
   
@@ -38,7 +38,7 @@ body {
   }
   
   .link {
-    background-color: #afcad1;
+    background-color: #99cedb;
     color: #ffffff;
     padding: 10px 20px;
     margin: 5px;
@@ -52,7 +52,7 @@ body {
   }
   
   .link:hover {
-    background-color: #72a9b6;
+    background-color: #72c4d8;
     transform: scale(1.05);
     font-size: 16px;
     border-radius: 8px;
@@ -65,14 +65,14 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #99a8c0;
   }
   .listItem {
     float: left;
   }
   
   .genBarContainer {
-    margin-top: 20px;
+    margin-top: 60px;
     display: flex;
     justify-content: center;
 }
