@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import { PinataSDK } from "pinata-web3";
 import FormData from "form-data";
 import fetch from "node-fetch"; 
+import { NextRequest } from "next/server";
 dotenv.config();
 
 const pinata = new PinataSDK({
@@ -100,7 +101,14 @@ export async function POST(req: Request) {
           if (!pinataUploadResponse.ok) {
             throw new Error("Failed to upload to Pinata");
           }
-      //return new Response(JSON.stringify(finaldata), { status: 200 });
+
+      const group = await pinata.groups.addCids({
+        groupId: "8cc7514a-f9fd-40ce-a64f-1270d3af32d9",
+        cids: [pinataData.IpfsHash],
+    });
+        if (!group) {
+            throw new Error("Failed to add to group");
+        }
       return new Response(JSON.stringify({ prompt: text }), { status: 200 });
     } catch (error) {
         console.log(error);
@@ -108,3 +116,27 @@ export async function POST(req: Request) {
     }
   }
   
+  const pinataGateway = "https://gateway.pinata.cloud/ipfs/";
+  
+  export async function GET(req : NextRequest) {
+    try {
+        const { searchParams } = new URL(req.url);
+        const ipfsHash = searchParams.get("cid");
+      if (!ipfsHash) {
+        throw new Error("Failed to fetch file from Pinata");
+      }
+      const response = await fetch(`${pinataGateway}${ipfsHash}`);
+        if (!response.ok) {
+            throw new Error("Failed to fetch file from Pinata");
+        }
+      // Stream the file directly to the frontend
+      return new Response(response.body, {
+        headers: {
+          "Content-Type": "audio/wav",
+          "Content-Disposition": `attachment; filename="song.wav"`, // Optional
+        },
+      });
+    } catch (error) {
+      return new Response(JSON.stringify({ error: "Failed to fetch file" }), { status: 500 });
+    }
+  }
