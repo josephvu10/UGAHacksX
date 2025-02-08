@@ -4,7 +4,8 @@ import styles from "./khoaTest.module.css";
 
 export default function khoaTest() {
   const [inputValue, setInputValue] = useState("");
-  const [songTitles, setSongTitles] = useState<string[]>([]); // Array to store song titles
+  const [songTitles, setSongTitles] = useState<string[]>([]); // Store song titles
+  const [genre, setGenre] = useState<string | null>(null); // Store genre
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -43,8 +44,9 @@ export default function khoaTest() {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.songTitles) {
-          setSongTitles(data.songTitles); // Update song titles array
+        if (data.songTitles && data.genre) {
+          setSongTitles(data.songTitles);
+          setGenre(data.genre);
         } else {
           console.error("Unexpected response format:", data);
         }
@@ -56,7 +58,7 @@ export default function khoaTest() {
 
   return (
     <div className={styles.container}>
-      <h1>Generate Song Titles</h1>
+      <h1>Generate Song Titles & Genre</h1>
       <input
         type="text"
         value={inputValue}
@@ -68,16 +70,26 @@ export default function khoaTest() {
         Generate
       </button>
 
-      {/* Display the generated song titles */}
+      {/* Display the generated song titles and genre */}
       <div className={styles.responseContainer}>
         {songTitles.length > 0 && (
-          <ul className={styles.songList}>
-            {songTitles.map((title, index) => (
-              <li key={index} className={styles.songItem}>
-                {title}
-              </li>
-            ))}
-          </ul>
+          <>
+            <h2>Song Titles</h2>
+            <ul className={styles.songList}>
+              {songTitles.map((title, index) => (
+                <li key={index} className={styles.songItem}>
+                  {title}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
+        {genre && (
+          <>
+            <h2>Most Fitting Genre</h2>
+            <p className={styles.genre}>{genre}</p>
+          </>
         )}
       </div>
     </div>

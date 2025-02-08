@@ -13,18 +13,57 @@ export async function POST(req: Request) {
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // Strict prompt to ensure output is ONLY song titles
-    const prompt = `Generate exactly 2 or 3 unique and creative song titles based on the following theme: "${text}". 
-    - Do NOT include any explanation or extra text. 
-    - Only output the song titles, each on a new line.`;
+    // Prompt to get both song titles and the most fitting genre
+    const prompt = `
+      Based on the following theme: "${text}", generate:
+      1. Exactly 2-3 unique and creative song titles.
+      2. The most fitting genre for these songs.
+      
+      Format your response as follows:
+      SONG TITLES:
+      - [Song Title 1]
+      - [Song Title 2]
+      - [Song Title 3 (if applicable)]
+
+      GENRE:
+      [Genre Name]
+
+      Do not add any explanations, only output in the given format.
+    `;
 
     const result = await model.generateContent(prompt);
 
-    // Extract the AI-generated response and split it into individual song titles
+    // Extract the AI-generated response
     const aiText = result.response.text();
-    const songTitles = aiText.split("\n").filter((line) => line.trim() !== ""); // Removes empty lines
 
-    return NextResponse.json({ songTitles });
+    // Parse the response to separate song titles and genre
+    const lines = aiText.split("\n").map((line) => line.trim()); // Trim spaces and split by line
+    const songTitles: string[] = [];
+    let genre = "";
+
+    let parsingTitles = false;
+    let parsingGenre = false;
+
+    for (const line of lines) {
+      if (line.startsWith("SONG TITLES:")) {
+        parsingTitles = true;
+        parsingGenre = false;
+        continue;
+      } else if (line.startsWith("GENRE:")) {
+        parsingGenre = true;
+        parsingTitles = false;
+        continue;
+      }
+
+      if (parsingTitles && line.startsWith("- ")) {
+        songTitles.push(line.replace("- ", "").trim()); // Remove "- " from the title
+      } else if (parsingGenre && line.length > 0) {
+        genre = line; // The first non-empty line under GENRE is the genre
+        break;
+      }
+    }
+
+    return NextResponse.json({ songTitles, genre });
   } catch (error) {
     console.error("Error generating response:", error);
     return NextResponse.json(
