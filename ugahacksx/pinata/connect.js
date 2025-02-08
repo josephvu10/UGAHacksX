@@ -1,6 +1,7 @@
 import { PinataSDK } from "pinata-web3";
 import dotenv from "dotenv";
 dotenv.config();
+
 const pinata = new PinataSDK({
   pinataJwt:  process.env.PINATA_JWT,
   pinataGateway: "ugahacksx.mypinata.cloud",
