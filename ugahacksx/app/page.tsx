@@ -7,12 +7,21 @@ export default function Home() {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push('/exampleUsage');
+    router.push('pages/exampleUsage');
   };
 
+  const handleClickBlog = () => {
+    router.push('pages/blogHome');
+  };
+
+
+  //we should make this the homepage with the slogan and make it similar to the Suno homepage
   return (
     <div className={styles.page}>
       <button onClick={handleClick}>Go to Example Usage</button>
+      <button onClick={handleClickBlog}>Go to Blog</button> 
+      <a href="/api/auth/login">Login</a>
+      <a href="/api/auth/logout">Logout</a>
     </div>
   );
 }
