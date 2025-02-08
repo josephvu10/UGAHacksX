@@ -10,9 +10,16 @@ export default function Home() {
     router.push('pages/exampleUsage');
   };
 
+  const handleClickBlog = () => {
+    router.push('pages/blogHome');
+  };
+
+
+  //we should make this the homepage with the slogan and make it similar to the Suno homepage
   return (
     <div className={styles.page}>
       <button onClick={handleClick}>Go to Example Usage</button>
+      <button onClick={handleClickBlog}>Go to Blog</button> 
     </div>
   );
 }
