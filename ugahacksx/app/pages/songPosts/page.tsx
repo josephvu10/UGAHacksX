@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import SongPostCard from "../../components/SongPostCard";
+import styles from "./songPosts.module.css";
 
 interface SongData {
   title: string;
@@ -13,7 +14,7 @@ interface SongData {
   visibility: string;
 }
 
-export default function SongPosts() {
+export default function songPosts() {
   const [songs, setSongs] = useState<SongData[]>([]);
 
   useEffect(() => {
@@ -35,9 +36,9 @@ export default function SongPosts() {
   }, []);
 
   return (
-    <div className="song-post-page">
-      <h1 className="page-title">Public Songs</h1>
-      <div className="song-grid">
+    <div className={styles.container}>
+      <h1 className={styles.pageTitle}>Public Songs</h1>
+      <div className={styles.songList}>
         {songs.length > 0 ? (
           songs.map((song, index) => (
             <SongPostCard key={index} {...song} />
