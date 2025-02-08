@@ -13,6 +13,8 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <button onClick={handleClick}>Go to Example Usage</button>
+      <a href="/api/auth/login">Login</a>
+      <a href="/api/auth/logout">Logout</a>
     </div>
   );
 }
