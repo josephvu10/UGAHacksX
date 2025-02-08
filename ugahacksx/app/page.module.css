@@ -1,0 +1,78 @@
+body {
+  height: 100px;
+  background-color: #f4f4f9;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .button {
+    background-color: #99cedb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .title {
+    font-size: 70px;
+    margin: 20px 0;
+    text-align: center;
+    padding-top: 250px; 
+  }
+
+  .button:hover {
+    background-color: #72c4d8;
+    transform: scale(1.05);
+  }
+  
+  .button:active {
+    transform: scale(0.98);
+  }
+  
+  .link {
+    background-color: #99cedb;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    float: right;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .link:hover {
+    background-color: #72c4d8;
+    transform: scale(1.05);
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #99a8c0;
+  }
+  .listItem {
+    float: left;
+  }
+  
+  .genBarContainer {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}

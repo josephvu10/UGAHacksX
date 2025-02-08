@@ -1,0 +1,22 @@
+.genContainer {
+    display: flex; 
+    margin: 50px auto 40px;
+    max-width: 900px;
+    position: relative;
+  }
+
+  .genContainer input[type="text"] {
+    width: 600px;
+    padding: 55px;
+    padding-right: 2em;
+    margin-bottom: 0px;
+    background-color: #121212;
+    border: 1px solid #FCFCFC;
+    border-radius: 4px;
+    color: #FCFCFC;
+    }
+    .genContainer input[type="text"]:hover {
+    border: 1px solid #4AAFBF;
+    border-radius: 4px;
+    color: #FCFCFC;
+    }
