@@ -29,11 +29,14 @@
   background-color: #ffffff;
   outline: none;
   transition: border 0.3s ease;
-  color: #000000;
+  color: #4d4b4b;
   padding-left: 8px; 
   padding-right: 8px; 
-  padding-top: 1px; 
-  height:20px; 
+  padding-top: 0px; 
+  height:40px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button {

@@ -49,6 +49,7 @@ export default function Home() {
         <input type="text" placeholder="Enter a prompt to express yourself..." />
         <button onClick={handleGenerateSound} type="button">Submit</button>
       </div>
+      
     </div>
   );
 }
