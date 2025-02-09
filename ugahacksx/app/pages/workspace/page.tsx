@@ -1,9 +1,23 @@
 "use client";
 
-import SongPostCard from "../../components/SongPostCard";
+import WorkspaceCard from "../../components/workspaceCard/page";
 import styles from "./workspace.module.css";
 import GenBar from "../../components/genBar/page";
 import NavBar from "../../components/NavBar/page";
+import React, { useEffect, useState } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+
+interface SongData {
+  title: string;
+  authorName: string;
+  genre: string;
+  image: string;
+  audio: string;
+  prompt: string;
+  visibility: string;
+  userId: string; // Ensure backend sends userId (Auth0 sub)
+}
+
 export default function Workspace() {
   const [userSongs, setUserSongs] = useState<SongData[]>([]);
   const [songs, setSongs] = useState<SongData[]>([]);
@@ -49,11 +63,28 @@ export default function Workspace() {
         <GenBar />
       </div>
 
+      <section className={styles.container2}>
+        <h2>Create songs for your mood</h2>
 
-    <section className = {styles.container2}>
-    <h2>Create songs for your mood</h2>
-    </section>
-
+        <div className={styles.songList}>
+          {userSongs.length > 0 ? (
+            userSongs.map((userSong, index) => (
+              <WorkspaceCard
+                key={index}
+                title={userSong.title}
+                authorName={userSong.authorName}
+                genre={userSong.genre}
+                imageCID={userSong.image}
+                audioCID={userSong.audio}
+                prompt={userSong.prompt}
+                visibility={userSong.visibility}
+              />
+            ))
+          ) : (
+            <p>{songs.length > 0 ? "No songs found for your account." : "Fetching Your Songs..."}</p>
+          )}
+        </div>
+      </section>
     </div>
   );
 }

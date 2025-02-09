@@ -2,7 +2,7 @@ import React from "react";
 
 interface WorkspaceCardProps {
   title: string;
-  author: string;
+  authorName: string;
   genre: string;
   imageCID: string;
   audioCID: string;
@@ -12,7 +12,7 @@ interface WorkspaceCardProps {
 
 const WorkspaceCard: React.FC<WorkspaceCardProps> = ({
   title,
-  author,
+  authorName,
   genre,
   imageCID,
   audioCID,
@@ -25,7 +25,7 @@ const WorkspaceCard: React.FC<WorkspaceCardProps> = ({
     <div className="song-post-card">
       <img src={`${pinataGateway}${imageCID}`} alt={title} className="song-image" />
       <h2 className="song-title">{title}</h2>
-      <p className="song-author">by {author}</p>
+      <p className="song-author">by {authorName}</p>
       <p className="song-genre">Genre: {genre}</p>
       <audio controls className="song-audio">
         <source src={`${pinataGateway}${audioCID}`} type="audio/wav" />
