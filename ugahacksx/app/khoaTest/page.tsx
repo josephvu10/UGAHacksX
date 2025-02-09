@@ -10,6 +10,7 @@ export default function khoaTest() {
   const [songTitles, setSongTitles] = useState<string[]>([]); // Store song titles
   const [genre, setGenre] = useState<string | null>(null); // Store genre
   const { user } = useUser(); // Get user data from Auth0
+  const [currentStep, setCurrentStep] = useState("Starting...");
 
 
   const [userId, setUserId] = useState("");
@@ -50,18 +51,39 @@ export default function khoaTest() {
           
       };
     
+  // useEffect(() => {
+  //   // Fetch user data from Auth0
+  //   if (user) {
+  //     setUserId(user.sub ?? "");
+  //     setNickname(user.nickname ?? "");
+  //   }
+  // }, [user]);
+
   useEffect(() => {
-    // Fetch user data from Auth0
-    if (user) {
-      setUserId(user.sub ?? "");
-      setNickname(user.nickname ?? "");
-    }
-  }, [user]);
+    const fetchStep = async () => {
+      try {
+        const response = await fetch("/api/pinata"); // Replace with your actual API route
+        const data = await response.json();
+        setCurrentStep(data.step);
+      } catch (error) {
+        console.error("Error fetching step:", error);
+      }
+    };
+
+    // ✅ Poll every 2 seconds to get the latest step
+    const interval = setInterval(fetchStep, 1000);
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
   return (
     <div className={styles.container}>
       <NavBar />
       <h1>Generate Song Titles & Genre</h1>
-      <ProgressBar />
+      <div>
+       <h2>Current Step:</h2>
+        <p>{currentStep}</p>
+      </div>
       <input
         type="text"
         value={inputValue}

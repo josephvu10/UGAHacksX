@@ -22,7 +22,7 @@ export default function songPosts() {
     const fetchSongs = async () => {
       try {
        // Fetch song data from backend API
-       const response = await fetch("/api/pinata");
+       const response = await fetch("/api/pinata/songs");
        const data: SongData[] = await response.json();
 
        // Update state
