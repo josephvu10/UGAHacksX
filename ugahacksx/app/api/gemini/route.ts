@@ -63,7 +63,7 @@ export async function POST(req: Request) {
       }
     }
 
-    return NextResponse.json({ songTitles, genre });
+    return new Response(JSON.stringify({ songTitles: songTitles, genre : genre }), { status: 200 });
   } catch (error) {
     console.error("Error generating response:", error);
     return NextResponse.json(

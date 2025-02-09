@@ -40,12 +40,14 @@ export async function POST(req: NextRequest) {
         const imageBuffer = Buffer.from(base64Image, "base64");
 
         // Return image as a binary response
-        return new Response(Buffer.from(imageBuffer), {
-            headers: {
-                "Content-Type": "image/png",
-                "Content-Disposition": `inline; filename="generated.png"`,
-            },
-        });
+        return new Response(JSON.stringify({ image: base64Image }), { status: 200 });
+
+        // return new Response(Buffer.from(imageBuffer), {
+        //     headers: {
+        //         "Content-Type": "image/png",
+        //         "Content-Disposition": `inline; filename="generated.png"`,
+        //     },
+        // });
 
     } catch (error) {
         console.error("Error generating image:", error);

@@ -12,14 +12,14 @@ const pinata = new PinataSDK({
 
 export async function POST(req: Request) {
     try {
-      const { text } = await req.json();
+      const { text, sub, nickname, visibility } = await req.json();
         
       if (!text) {
         return new Response(JSON.stringify({ error: "Text is required" }), { status: 400 });
       }
       const payload1 = {
         prompt: {
-            text: "20 seconds " + text,
+            text: "20 seconds of " + text,
         },
       };
       const createAPI = "https://public-api.beatoven.ai/api/v1/tracks";
@@ -67,7 +67,7 @@ export async function POST(req: Request) {
             throw new Error("Final Song Creation Failed");
         }
         while (finaldata.status != "composed") {
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+            await new Promise((resolve) => setTimeout(resolve, 2500));
             const finalSong = await fetch(getComposeAPI, {
                 method: "GET",
                 headers: {
@@ -102,6 +102,7 @@ export async function POST(req: Request) {
             throw new Error("Failed to upload to Pinata");
           }
 
+      // Add the CID to a Pinata group
       const group = await pinata.groups.addCids({
         groupId: "8cc7514a-f9fd-40ce-a64f-1270d3af32d9",
         cids: [pinataData.IpfsHash],
@@ -109,12 +110,90 @@ export async function POST(req: Request) {
         if (!group) {
             throw new Error("Failed to add to group");
         }
-      return new Response(JSON.stringify({ prompt: text }), { status: 200 });
-    } catch (error) {
-        console.log(error);
-      return new Response(JSON.stringify({ error: "Something went wrong" }), { status: 500 });
-    }
-  }
+      
+        // Get generated title and genre
+        const geminiResponse = await fetch("http://localhost:3000/api/gemini", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ text }),
+        });
+
+        if (!geminiResponse.ok) {
+            throw new Error("Failed to get song titles from Gemini API");
+        }
+
+        const { songTitles, genre } = await geminiResponse.json();
+
+        console.log("🎵 Song Titles:", songTitles);
+        console.log("🎼 Genre:", genre);
+
+        // Get generated image
+        const imageResponse = await fetch("http://localhost:3000/api/generate", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt: text }),
+        });
+        const imageData = await imageResponse.json();
+        if (!imageResponse.ok) {
+            throw new Error("Failed to get image from Gemini API");
+        }
+        console.log("Printing Image Data");
+
+        // Uploading to Pinata
+
+          const file = new File([imageData.image], "image.txt", { type: "text/plain" });
+          const upload = await pinata.upload.file(file);
+          console.log("Uploading Image to Pinata");
+          const group2 = await pinata.groups.addCids({
+            groupId: "f44d84bb-23fd-43e1-9d14-83ab2c0b6675",
+            cids: [upload.IpfsHash],
+          });
+            if (!group2) {
+                throw new Error("Failed to add to group");
+            }
+            const songObject = {
+              authorName : nickname,
+              title: songTitles[0],
+              genre: genre,
+              image: upload.IpfsHash,
+              audio: pinataData.IpfsHash,
+              prompt: text,
+              visibility : visibility
+            }
+            const upload2 = await pinata.upload.json(songObject);
+            console.log("Uploading song to Pinata");
+            const group3 = await pinata.groups.addCids({
+              groupId: "7a97dd88-d4dd-42bc-bd51-a04e608d270e",
+              cids: [upload2.IpfsHash],
+            });
+              if (!group3) {
+                  throw new Error("Failed to add to group");
+              }
+              const file2 = new File([upload2.IpfsHash], `${sub}`, { type: "text/plain" });
+              console.log("Uploading user to pinata");
+              const upload3 = await pinata.upload.file(file2);
+              if (!upload3) {
+                  throw new Error("Failed to upload to Pinata");
+              }
+              const group4 = await pinata.groups.addCids({
+                groupId: "c180c535-2513-4105-94e5-3af532ff51ac",
+                cids: [upload3.IpfsHash],
+              });
+                if (!group4) {
+                    throw new Error("Failed to add to group");
+                }
+                return new Response(JSON.stringify({ prompt: text }), { status: 200 });
+        } catch (error) {
+          return new Response(JSON.stringify({ error: error }), { status: 500 });
+        }
+        
+    } 
+ 
+  
   
   const pinataGateway = "https://gateway.pinata.cloud/ipfs/";
   
