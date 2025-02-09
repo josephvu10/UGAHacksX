@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       }
       const payload1 = {
         prompt: {
-            text: "20 seconds " + text,
+            text: "20 seconds of " + text,
         },
       };
       const createAPI = "https://public-api.beatoven.ai/api/v1/tracks";
@@ -102,12 +102,62 @@ export async function POST(req: Request) {
             throw new Error("Failed to upload to Pinata");
           }
 
+      // Add the CID to a Pinata group
       const group = await pinata.groups.addCids({
         groupId: "8cc7514a-f9fd-40ce-a64f-1270d3af32d9",
         cids: [pinataData.IpfsHash],
     });
         if (!group) {
             throw new Error("Failed to add to group");
+        }
+      
+        // Get generated title and genre
+        const geminiResponse = await fetch("http://localhost:3000/api/gemini", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ text }),
+        });
+
+        if (!geminiResponse.ok) {
+            throw new Error("Failed to get song titles from Gemini API");
+        }
+
+        const { songTitles, genre } = await geminiResponse.json();
+
+        console.log("🎵 Song Titles:", songTitles);
+        console.log("🎼 Genre:", genre);
+
+        // Get generated image
+        const imageResponse = await fetch("http://localhost:3000/api/generate", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt: text }),
+        });
+        const imageData = await imageResponse.json();
+        if (!imageResponse.ok) {
+            throw new Error("Failed to get image from Gemini API");
+        }
+        console.log(imageData.image);
+
+
+        // Uploading to Pinata
+        try {
+          const file = new File([imageData.image], "image.txt", { type: "text/plain" });
+          const upload = await pinata.upload.file(file);
+          console.log(upload);
+          const group2 = await pinata.groups.addCids({
+            groupId: "f44d84bb-23fd-43e1-9d14-83ab2c0b6675",
+            cids: [upload.IpfsHash],
+          });
+            if (!group2) {
+                throw new Error("Failed to add to group");
+            }
+        } catch (error) {
+          console.log(error);
         }
       return new Response(JSON.stringify({ prompt: text }), { status: 200 });
     } catch (error) {
