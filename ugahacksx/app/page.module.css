@@ -1,14 +1,15 @@
 body {
   height: 100px;
-  background-color: #f4f4f9;
+  background-color: #F2EFE7;
 }
+
 
 .page {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  
+
   .button {
     background-color: #99cedb;
     color: white;
@@ -22,6 +23,7 @@ body {
   }
 
   .title {
+    font-family: 'Roboto', sans-serif;
     font-size: 70px;
     margin: 20px 0;
     text-align: center;

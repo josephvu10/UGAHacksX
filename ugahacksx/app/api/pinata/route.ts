@@ -206,7 +206,7 @@ export async function GET(req: NextRequest) {
     //   throw new Error("Failed to fetch file from Pinata");
     // }// 🎯 STEP 1: Fetch List of All Files from Pinata API
 
-    const pinataListResponse = await fetch("https://api.pinata.cloud/data/pinList", {
+    const pinataListResponse = await fetch("https://api.pinata.cloud/data/pinList?pageLimit=100", {
       method: "GET",
       headers: {
         "pinata_api_key": process.env.PINATA_API_KEY!,
