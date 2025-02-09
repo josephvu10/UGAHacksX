@@ -14,13 +14,13 @@
   align-items: center;
   justify-content: space-between;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0px 0px;
   padding: 10px 20px;
 }
 
 /* Main title (e.g., "Sound Genie") */
 .navTitle {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
   color: black;
   cursor: pointer;
@@ -44,14 +44,16 @@
 
 .navItem {
   float: left;
+  font-size: 20px;
 }
 
 /* Styled buttons inside the list */
 .navButton {
   background-color: #FBF5DD;
+  height: 50px;
   color: black;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -72,7 +74,7 @@
   background-color: #FBF5DD;
   color: black;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;

@@ -41,22 +41,12 @@ export default function Home() {
 
       <NavBar />
       <div className={styles.titleContainer}>
-        <Image
-          className={styles.image}
-          src={OIAUIA}
-          alt="oia-uia"
-        />
         <h1 className={styles.title}> Express the Sound of Your Soul
         </h1>
-        <Image
-          className={styles.image}
-          src={OIAUIA}
-          alt="oia-uia"
-        />
       </div>
 
       <div className={styles.genBarContainer}>
-        <input type="text" placeholder="Generate sounds..." />
+        <input type="text" placeholder="Enter a prompt to express yourself..." />
         <button onClick={handleGenerateSound} type="button">Submit</button>
       </div>
     </div>
