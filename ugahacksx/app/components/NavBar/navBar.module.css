@@ -1,5 +1,6 @@
 /* Container for the entire navbar */
 .navContainer {
+
   width: 100%;
   background-color: #A6CDC6;
   padding: 10px 0;
@@ -8,6 +9,11 @@
   position: sticky;  top: 0;
 }
 
+.navBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 /* Flexbox for horizontal navbar layout */
 .navBar {
   display: flex;
@@ -18,18 +24,20 @@
   padding: 10px 20px;
 }
 
-/* Main title (e.g., "Sound Genie") */
 .navTitle {
+  padding: 0;
   font-size: 36px;
-  font-weight: bold;
-  color: black;
-  cursor: pointer;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  color: black;  /* Dark neutral color */
+  letter-spacing: 1px;
   transition: color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
 }
 
 .navTitle:hover {
-  color: #ece4f3;
-  transform: scale(1.05);
+  color: #22987D;  /* Soft accent color on hover */
+  transform: translateY(-2px);  /* Slight lift effect */
 }
 
 /* List-based navigation styling */
