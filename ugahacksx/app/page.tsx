@@ -36,15 +36,18 @@ export default function Home() {
     <div className={styles.page}>
 
       <NavBar />
-      <Image 
-        className={styles.image}
-        src={OIAUIA}
-        alt="oia-uia"
-        width={500}
-        height={500}
-      />
       <div className={styles.titleContainer}>
+        <Image
+          className={styles.image}
+          src={OIAUIA}
+          alt="oia-uia"
+        />
         <h1 className={styles.title}> Slogan slogan slogan slogan </h1>
+        <Image
+          className={styles.image}
+          src={OIAUIA}
+          alt="oia-uia"
+        />
       </div>
 
       <div className={styles.genBarContainer}>
