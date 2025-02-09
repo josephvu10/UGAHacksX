@@ -4,6 +4,8 @@ import WorkspaceCard from "../../components/workspaceCard/page";
 import styles from "./workspace.module.css";
 import GenBar from "../../components/genBar/page";
 import NavBar from "../../components/NavBar/page";
+import Image from "next/image";
+import lavendar from "../../public/lavendar.png";
 import React, { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
@@ -75,20 +77,23 @@ export default function Workspace() {
 
       <div className={styles.container1}>
         <h1 className={styles.title}>My Workspace</h1>
-        <br />
-      </div>
 
       <div className={styles.genBarContainer}>
         <GenBar />
       </div>
+      </div>
+
+
+
       <div>
        <h2>Current Step:</h2>
         <p>{currentStep}</p>
       </div>
+
       <section className={styles.container2}>
         <h2>Create songs for your mood</h2>
-
-        <div className={styles.songList}>
+        <br></br>
+        <div className={styles.songList1}>
           {userSongs.length > 0 ? (
             userSongs.map((userSong, index) => (
               <WorkspaceCard
