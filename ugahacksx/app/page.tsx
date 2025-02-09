@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import { useRouter } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import NavBar from './components/NavBar/page'; // Import the NavBar component
+import OIAUIA from './public/oia-uia.gif';
 
 export default function Home() {
   // For Auth0
@@ -35,7 +36,13 @@ export default function Home() {
     <div className={styles.page}>
 
       <NavBar />
-
+      <Image 
+        className={styles.image}
+        src={OIAUIA}
+        alt="oia-uia"
+        width={500}
+        height={500}
+      />
       <div className={styles.titleContainer}>
         <h1 className={styles.title}> Slogan slogan slogan slogan </h1>
       </div>
