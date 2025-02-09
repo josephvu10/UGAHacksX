@@ -23,8 +23,11 @@ export default function SongPosts() {
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        const response = await fetch("/api/pinata");
-        const data: SongData[] = await response.json();
+
+       // Fetch song data from backend API
+       const response = await fetch("/api/pinata/songs");
+       const data: SongData[] = await response.json();
+
 
         console.log("Fetched Songs:", data); // Debugging output
 
