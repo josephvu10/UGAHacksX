@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from "react";
-import SongPostCard from "../../components/SongPostCard/page";
+import SongPostCard from "../../components/SongPostCard";
 import NavBar from "../../components/NavBar/page";
 import styles from "./songPosts.module.css";
 
@@ -61,7 +61,7 @@ export default function songPosts() {
         )}
       </div>
       <div className={styles.footer}>
-        
+
       </div>
     </div>
   );
