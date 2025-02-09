@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { useRouter } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import NavBar from './components/NavBar/page'; // Import the NavBar component
 
 export default function Home() {
   // For Auth0
@@ -29,25 +30,11 @@ export default function Home() {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
+
   return (
     <div className={styles.page}>
-      <ul className={styles.list}>
-        <li className={styles.listItem}><button className={styles.button} onClick={handleClick}>Go to Example Usage</button></li>
-        <li className={styles.listItem}><button className={styles.button} onClick={handleClickSongPosts}>Go to Public Songs</button></li>
-        <li className={styles.listItem}><button className={styles.button} onClick={handleClickWorkspace}>Go to Workspace</button></li>
-        <li className={styles.listItem}><button className={styles.button} onClick={khoaTest}>Khoa's Test</button></li>
-        {!user && <a className={styles.link} href="/api/auth/login">Login</a>}
-    {user && (
-      <>
-        <a className={styles.link} href="/api/auth/logout">Logout</a>
-        <img 
-          src={user.picture} 
-          alt="User Profile" 
-          style={{ width: "40px", height: "40px", borderRadius: "50%", marginLeft: "10px" }}
-        />
-      </>
-    )}
-      </ul>
+
+      <NavBar />
 
       <div className={styles.titleContainer}>
         <h1 className={styles.title}> Slogan slogan slogan slogan </h1>
@@ -57,8 +44,6 @@ export default function Home() {
         <input type="text" placeholder="Generate sounds..." />
         <button type="submit">Submit</button>
       </div>
-
     </div>
-
   );
 }

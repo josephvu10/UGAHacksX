@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import SongPostCard from "../../components/SongPostCard";
+import NavBar from "../../components/NavBar/page";
 import styles from "./songPosts.module.css";
 
 interface SongData {
@@ -37,6 +38,7 @@ export default function songPosts() {
 
   return (
     <div className={styles.container}>
+      <NavBar />
       <h1 className={styles.pageTitle}>Public Songs</h1>
       <div className={styles.songList}>
         {songs.length > 0 ? (

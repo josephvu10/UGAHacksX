@@ -3,10 +3,13 @@
 import Card from "../Card"
 import styles from "./workspace.module.css";
 import GenBar from "../../components/genBar/page";
-
+import NavBar from "../../components/NavBar/page";
 export default function Workspace() {
   return (
     <div>
+
+      <NavBar />
+
       <div className = {styles.container1}>
         <h1 className={styles.title}>My Workspace</h1>
         <br></br>
