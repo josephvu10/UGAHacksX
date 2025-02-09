@@ -12,9 +12,12 @@ const NavBar = () => {
     return (
         <div className={styles.navContainer}>
             <div className={styles.navBar}>
-                <h1 onClick={() => router.push("/")} className={styles.navTitle}>
-                    Sound Genie
-                </h1>
+                <div className={styles.navBrand}>
+                    <img src="/music.png" alt="Sona Image" width="50" height="50"></img>
+                    <h1 onClick={() => router.push("/")} className={styles.navTitle}>
+                        Sona
+                    </h1>
+                </div>
                 <ul className={styles.navItems}>
                     <li className={styles.navItem}>
                         {user && (
