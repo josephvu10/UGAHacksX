@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./workspaceCard.module.css"; 
 
 interface WorkspaceCardProps {
   title: string;
@@ -36,13 +37,16 @@ const WorkspaceCard: React.FC<WorkspaceCardProps> = ({
       {audio ? (
         <audio controls>
           <source src={audio} type="audio/wav" />
+
           Your browser does not support the audio element.
         </audio>
       ) : (
         <p>Loading audio...</p>
       )}
-      <p className="song-prompt">Prompt: {prompt}</p>
-      <p className="song-visibility">Visibility: {visibility}</p>
+
+
+      <p className={styles.songPrompt}>Prompt: {prompt}</p>
+      <p className={styles.songVsibility}>Visibility: {visibility}</p>
     </div>
   );
 };
