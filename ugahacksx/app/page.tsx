@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import styles from "./page.module.css";
-import GenBar from "./components/genBar/page";
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
@@ -37,10 +36,12 @@ export default function Home() {
       <h1 className={styles.title}> Slogan slogan slogan slogan </h1>
       </div>
 
-      <div className={styles.genBarContainer}>
-        <GenBar />
+        <div className={styles.genBarContainer}>
+          <input type="text" placeholder="Generate sounds..." />
+          <button type="submit">Submit</button>
       </div>
 
     </div>
+
   );
 }

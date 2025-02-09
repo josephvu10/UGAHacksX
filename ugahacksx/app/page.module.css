@@ -71,8 +71,47 @@ body {
     float: left;
   }
   
-  .genBarContainer {
-    margin-top: 60px;
-    display: flex;
-    justify-content: center;
+.genBarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space between input and button */
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 600px;
+  background-color: #c1add0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.genBarContainer input[type="text"] {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #ece4f3;
+  color: #000000;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.genBarContainer input[type="text"]:focus,
+.genBarContainer input[type="text"]:hover {
+  background-color: #ffffff;
+}
+
+.genBarContainer button {
+  padding: 12px 20px;
+  background-color: #99cedb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.genBarContainer button:hover {
+  background-color: #72c4d8;
 }
