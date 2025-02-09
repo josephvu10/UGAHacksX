@@ -62,6 +62,7 @@ export default function Workspace() {
       <div className={styles.genBarContainer}>
         <GenBar />
       </div>
+      <br></br>
       </div>
 
 

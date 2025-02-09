@@ -73,11 +73,13 @@ const GenBar = () => {
       <button onClick={handleSubmit} className={styles.button}>
         Submit
       </button>
-
+      <label className={styles.label} >
+        <p> Private? </p>
+        </label>
       <label className="toggle-switch">
-  <input type="checkbox" />
-  <span className="slider"></span>
-</label>
+      <input type="checkbox" />
+        <span className="slider"></span>
+        </label>
   
     </div>
   );
