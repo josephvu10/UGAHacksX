@@ -11,13 +11,14 @@
 .container2 {
     text-align: center;
     padding: 20px;
+    min-height: 48vh;
 }
   
 .title {
     margin: 0;
     padding: 40px 0;
     display: flex;
-    font-size: 50px;
+    font-size: 40px;
     justify-content: center;
 }
   
@@ -26,3 +27,18 @@
     display: flex;
     justify-content: center;
 }
+
+.workfooter {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #b02e2e;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+  }

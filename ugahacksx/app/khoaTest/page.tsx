@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./khoaTest.module.css";
+import Image from "next/image";
 
 export default function KhoaTest() {
   const [inputValue, setInputValue] = useState("");
@@ -57,7 +58,7 @@ export default function KhoaTest() {
   };
 
   return (
-    <div>
+    <div className={styles.mainconent}> 
     <div className={styles.titleContainer}>
       <h1>Generate Song Titles & Genre</h1>
     </div>
@@ -98,6 +99,10 @@ export default function KhoaTest() {
         )}
       </div>
     
+      <footer className={styles.footer}>
+        <p>&copy; 2023 My Workspace. All rights reserved.</p>
+        <img src="Images/playButton.png" alt="Logo" className={styles.logo} />
+     </footer>
     </div>
   );
 }

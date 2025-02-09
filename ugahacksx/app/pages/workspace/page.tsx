@@ -16,11 +16,14 @@ export default function Workspace() {
         <GenBar />
       </div>
 
-
     <section className = {styles.container2}>
     <h2>Create songs for your mood</h2>
     </section>
-
+    
+    <footer className={styles.workfooter}>
+        <p>&copy; 2023 My Workspace. All rights reserved.</p>
+        <img src="Images/playButton.png" alt="Logo" className={styles.logo} />
+     </footer>
     </div>
   );
 }
