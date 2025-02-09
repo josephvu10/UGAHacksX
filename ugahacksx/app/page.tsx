@@ -7,30 +7,6 @@ import NavBar from './components/NavBar/page'; // Import the NavBar component
 import OIAUIA from './public/oia-uia.gif';
 
 export default function Home() {
-  // For Auth0
-  const { user, error, isLoading } = useUser();
-
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push('pages/exampleUsage');
-  };
-
-  const handleClickSongPosts = () => {
-    router.push('pages/songPosts');
-  };
-
-  const handleClickWorkspace = () => {
-    router.push('pages/workspace');
-  };
-
-  //we should make this the homepage with the slogan and make it similar to the Suno homepage
-  const khoaTest = () => {
-    router.push('/khoaTest');
-  }
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
 
   return (
     <div className={styles.page}>
