@@ -1,67 +1,76 @@
     .container1 {
-        background-image: url("../../public/lavendar.png");
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: white;
-        height: 50vh;
-        padding: 20px;
-        font-family: kanit, sans-serif; 
+      background-image: url("../../public/lavendar.png");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      height: 50vh;
+      padding: 20px;
+      font-family: kanit, sans-serif;
     }
-      
 
-.container2 {
-    text-align: center;
-    padding: 20px;
-    min-height: 48vh;
-}
-.status {
-    font-size: 20px;
-    text-align: center;
-  }
-.status a {
-    font-size: 24px;
-    font-weight: bold;
-    background: linear-gradient(90deg, #008000, #2E8B57, #3CB371, #66CDAA);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientMove 3s ease infinite;
-  }
-  
-  @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-.title {
-    margin: 0;
-    padding: 40px 0;
-    display: flex;
-    font-size: 40px;
-    text-shadow: 3px 3px 2px #474747;
-    justify-content: center;
-}
-  
-.genBarContainer {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
+    .container2 {
+      text-align: center;
+      padding: 20px;
+      min-height: 48vh;
+    }
 
-.songList1 {
-    width: 90%;
-    margin: 0 auto;
-    display: grid;
-    column-gap: 50px;
-    row-gap: 20px;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-  }
+    .status {
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .status a {
+      font-size: 24px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #008000, #2E8B57, #3CB371, #66CDAA);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 3s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .title {
+      margin: 0;
+      padding: 40px 0;
+      display: flex;
+      font-size: 40px;
+      text-shadow: 3px 3px 2px #474747;
+      justify-content: center;
+    }
+
+    .genBarContainer {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .songList1 {
+      width: 90%;
+      margin: 0 auto;
+      display: grid;
+      column-gap: 50px;
+      row-gap: 20px;
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+    }

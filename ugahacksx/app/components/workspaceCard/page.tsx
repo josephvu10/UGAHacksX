@@ -20,33 +20,29 @@ const WorkspaceCard: React.FC<WorkspaceCardProps> = ({
   prompt,
   visibility,
 }) => {
-  const pinataGateway = "ugahacksx.mypinata.cloud";
-  
   return (
-    <div className="song-post-card">
-      {/* 🎵 Render Image (Show Loading if Not Ready) */}
+    <div className={styles.songPostCard}>
       {image ? (
-        <img src={image} alt={title}/>
+        <img src={image} alt={title} className={styles.songImage} />
       ) : (
         <p>Loading image...</p>
       )}
-      <h2 className="song-title">{title}</h2>
-      <p className="song-author">by {authorName}</p>
-      <p className="song-genre">Genre: {genre}</p>
-      {/* 🎧 Render Audio Player (Show Loading if Not Ready) */}
+      <h2 className={styles.songTitle}>{title}</h2>
+      <p className={styles.songAuthor}>by {authorName}</p>
+      <p className={styles.songGenre}>
+        <span className={styles.genreLabel}>Genre: </span>
+        <span className={styles.genreValue}>{genre}</span>
+      </p>
       {audio ? (
-        <audio controls>
+        <audio controls className={styles.audioPlayer}>
           <source src={audio} type="audio/wav" />
-
           Your browser does not support the audio element.
         </audio>
       ) : (
         <p>Loading audio...</p>
       )}
-
-
       <p className={styles.songPrompt}>Prompt: {prompt}</p>
-      <p className={styles.songVsibility}>Visibility: {visibility}</p>
+      <p className={styles.songVisibility}>Visibility: {visibility}</p>
     </div>
   );
 };
