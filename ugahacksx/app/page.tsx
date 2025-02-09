@@ -49,7 +49,10 @@ export default function Home() {
         <input type="text" placeholder="Enter a prompt to express yourself..." />
         <button onClick={handleGenerateSound} type="button">Submit</button>
       </div>
-      
+      <div className={styles.descriptionContainer}>
+        <p>Welcome to Sona!</p>
+        <p>Sona is an app meant to help users express themselves through music. Insert a phrase, prompt, lyric, or poem and we will create audio, a title, and assign a genre for your piece of music.</p>
+      </div>
     </div>
   );
 }
