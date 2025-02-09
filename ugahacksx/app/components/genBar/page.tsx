@@ -1,7 +1,7 @@
 "use client";
 import styles from "./genBar.module.css";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 
 const GenBar = () => {
   const [inputValue, setInputValue] = useState(""); // Input field state
@@ -11,6 +11,12 @@ const GenBar = () => {
   const [userId, setUserId] = useState("");
   const [nickname, setNickname] = useState("");
   const [visibility, setVisibility] = useState("private"); // Default: private
+
+  const [switchState, setSwitchState] = useState(true);  
+  function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
+    console.log("---", e.target.checked);
+    setSwitchState(!switchState);
+  }
 
   // Handles changes in the input field
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,10 +81,14 @@ const GenBar = () => {
         Submit
       </button>
 
-      {/* Public/Private Toggle */}
-      <label className={styles.toggleSwitch}>
-        <input type="checkbox" checked={visibility === "private"} onChange={handleToggleChange} />
-      </label>
+      <label className={styles.label} >
+        <p> Private? </p>
+        </label>
+      <label className="toggle-switch">
+      <input type="checkbox" />
+        <span className="slider"></span>
+        </label>
+
     </div>
   );
 };
