@@ -62,7 +62,7 @@ const GenBar = () => {
         Submit
       </button>
       <div className={styles.toggleContainer}>
-        <span className={styles.toggleLabel}>Private?</span>
+        <span className={styles.toggleLabel}>Public?</span>
         <label className={styles.toggleSwitch}>
           <input
             type="checkbox"
