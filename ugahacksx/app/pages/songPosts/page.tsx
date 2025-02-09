@@ -60,6 +60,9 @@ export default function songPosts() {
           <p>Fetching Public Songs...</p>
         )}
       </div>
+      <div className={styles.footer}>
+        
+      </div>
     </div>
   );
 }
