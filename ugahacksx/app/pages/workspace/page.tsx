@@ -1,6 +1,7 @@
 "use client";
 
 import SongPostCard from "../../components/SongPostCard";
+import WorkspaceCard from "../../components/workspaceCard/page";
 import styles from "./workspace.module.css";
 import GenBar from "../../components/genBar/page";
 import NavBar from "../../components/NavBar/page";
@@ -22,12 +23,14 @@ export default function Workspace() {
   const [userSongs, setUserSongs] = useState<SongData[]>([]);
   const [songs, setSongs] = useState<SongData[]>([]);
   const { user, isLoading } = useUser();
+  const [currentStep, setCurrentStep] = useState("Starting...");
+  
 
   // Fetch all songs from API
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        const response = await fetch("/api/pinata");
+        const response = await fetch("/api/pinata/songs");
         const data: SongData[] = await response.json();
 
         console.log("Fetched Songs:", data); // Debugging
@@ -50,6 +53,23 @@ export default function Workspace() {
     }
   }, [user, songs, isLoading]);
 
+    useEffect(() => {
+      const fetchStep = async () => {
+        try {
+          const response = await fetch("/api/pinata"); // Replace with your actual API route
+          const data = await response.json();
+          setCurrentStep(data.step);
+        } catch (error) {
+          console.error("Error fetching step:", error);
+        }
+      };
+  
+      // ✅ Poll every 2 seconds to get the latest step
+      const interval = setInterval(fetchStep, 1000);
+  
+      return () => clearInterval(interval); // Cleanup on unmount
+    }, []);
+
   return (
     <div>
       <NavBar />
@@ -63,19 +83,23 @@ export default function Workspace() {
         <GenBar />
       </div>
 
+      <div>
+       <h2>Current Step:</h2>
+        <p>{currentStep}</p>
+      </div>
       <section className={styles.container2}>
         <h2>Create songs for your mood</h2>
 
         <div className={styles.songList}>
           {userSongs.length > 0 ? (
             userSongs.map((userSong, index) => (
-              <SongPostCard
+              <WorkspaceCard
                 key={index}
                 title={userSong.title}
                 authorName={userSong.authorName}
                 genre={userSong.genre}
-                image={userSong.image}
-                audio={userSong.audio}
+                imageCID={userSong.image}
+                audioCID={userSong.audio}
                 prompt={userSong.prompt}
                 visibility={userSong.visibility}
               />
