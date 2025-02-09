@@ -16,14 +16,6 @@ const NavBar = () => {
                 </h1>
                 <ul className={styles.navItems}>
                     <li className={styles.navItem}>
-                        <button
-                            onClick={() => router.push("/khoaTest")}
-                            className={styles.navButton}
-                        >
-                            Khoa Test
-                        </button>
-                    </li>
-                    <li className={styles.navItem}>
                         {user && (
                             <button
                                 onClick={() => router.push("/pages/workspace")}
