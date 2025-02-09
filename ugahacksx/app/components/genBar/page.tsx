@@ -4,12 +4,13 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import React, { useState, useEffect, ChangeEvent } from "react";
 
 const GenBar = () => {
-  const [inputValue, setInputValue] = useState(""); // State for input field
+  const [inputValue, setInputValue] = useState(""); // Input field state
   const [songTitles, setSongTitles] = useState<string[]>([]);
   const [genre, setGenre] = useState<string | null>(null);
   const { user } = useUser();
   const [userId, setUserId] = useState("");
   const [nickname, setNickname] = useState("");
+  const [visibility, setVisibility] = useState("private"); // Default: private
 
   const [switchState, setSwitchState] = useState(true);  
   function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
@@ -22,6 +23,11 @@ const GenBar = () => {
     setInputValue(e.target.value);
   };
 
+  // Handle checkbox toggle
+  const handleToggleChange = () => {
+    setVisibility((prev) => (prev === "private" ? "public" : "private"));
+  };
+
   const handleSubmit = () => {
     if (!inputValue) {
       console.error("Error: No text input provided.");
@@ -32,9 +38,11 @@ const GenBar = () => {
       text: inputValue,
       sub: user ? user.sub : null,
       nickname: user ? user.nickname : null,
-      visibility: "public",
+      visibility, // Updated to reflect checkbox state
     };
-    
+
+    console.log("Submitting:", requestBody);
+
     // Make a POST request to the API
     fetch("/api/pinata", {
       method: "POST",
@@ -50,7 +58,6 @@ const GenBar = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-      
   };
 
   // Fetch user data from Auth0 when available
@@ -62,17 +69,18 @@ const GenBar = () => {
   }, [user]);
 
   return (
-    <div className={styles.genContainer}> 
-      <input 
-        type="text" 
-        placeholder="Generate sounds..." 
-        value={inputValue} 
-        onChange={handleChange} // Input now updates state
+    <div className={styles.genContainer}>
+      <input
+        type="text"
+        placeholder="Generate sounds..."
+        value={inputValue}
+        onChange={handleChange}
         className={styles.input}
       />
       <button onClick={handleSubmit} className={styles.button}>
         Submit
       </button>
+
       <label className={styles.label} >
         <p> Private? </p>
         </label>
@@ -80,7 +88,7 @@ const GenBar = () => {
       <input type="checkbox" />
         <span className="slider"></span>
         </label>
-  
+
     </div>
   );
 };

@@ -24,12 +24,14 @@ export default function Workspace() {
   const [userSongs, setUserSongs] = useState<SongData[]>([]);
   const [songs, setSongs] = useState<SongData[]>([]);
   const { user, isLoading } = useUser();
+  const [currentStep, setCurrentStep] = useState("Starting...");
+  
 
   // Fetch all songs from API
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        const response = await fetch("/api/pinata");
+        const response = await fetch("/api/pinata/songs");
         const data: SongData[] = await response.json();
 
         console.log("Fetched Songs:", data); // Debugging
@@ -52,6 +54,23 @@ export default function Workspace() {
     }
   }, [user, songs, isLoading]);
 
+    useEffect(() => {
+      const fetchStep = async () => {
+        try {
+          const response = await fetch("/api/pinata"); // Replace with your actual API route
+          const data = await response.json();
+          setCurrentStep(data.step);
+        } catch (error) {
+          console.error("Error fetching step:", error);
+        }
+      };
+  
+      // ✅ Poll every 2 seconds to get the latest step
+      const interval = setInterval(fetchStep, 1000);
+  
+      return () => clearInterval(interval); // Cleanup on unmount
+    }, []);
+
   return (
     <div>
       <NavBar />
@@ -62,9 +81,14 @@ export default function Workspace() {
       <div className={styles.genBarContainer}>
         <GenBar />
       </div>
-      <br></br>
       </div>
 
+
+
+      <div>
+       <h2>Current Step:</h2>
+        <p>{currentStep}</p>
+      </div>
 
       <section className={styles.container2}>
         <h2>Create songs for your mood</h2>
