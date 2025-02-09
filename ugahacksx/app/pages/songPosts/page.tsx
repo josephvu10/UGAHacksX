@@ -38,6 +38,7 @@ export default function songPosts() {
 
   return (
     <div className={styles.container}>
+      <NavBar />
       <div className={styles.header}>
         <h1 className={styles.title}>Public Songs</h1>
       </div>
