@@ -7,7 +7,6 @@ interface SongPostCardProps {
   image: string;
   audio: string;
   prompt: string;
-  visibility: string;
 }
 
 const SongPostCard: React.FC<SongPostCardProps> = ({
@@ -17,12 +16,9 @@ const SongPostCard: React.FC<SongPostCardProps> = ({
   image,
   audio,
   prompt,
-  visibility,
 }) => {
-  
   return (
     <div className={styles.songPostCard}>
-      {/* 🎵 Render Image (Show Loading if Not Ready) */}
       {image ? (
         <img src={image} alt={title} className={styles.songImage} />
       ) : (
@@ -31,9 +27,11 @@ const SongPostCard: React.FC<SongPostCardProps> = ({
 
       <h2 className={styles.songTitle}>{title}</h2>
       <p className={styles.songAuthor}>by {authorName}</p>
-      <p className={styles.songGenre}>Genre: {genre}</p>
+      <p className={styles.songGenre}>
+        <span className={styles.genreLabel}>Genre: </span>
+        <span className={styles.genreValue}>{genre}</span>
+      </p>
 
-      {/* 🎧 Render Audio Player (Show Loading if Not Ready) */}
       {audio ? (
         <audio controls className={styles.audioPlayer}>
           <source src={audio} type="audio/wav" />
@@ -44,7 +42,6 @@ const SongPostCard: React.FC<SongPostCardProps> = ({
       )}
 
       <p className={styles.songPrompt}>Prompt: {prompt}</p>
-      <p className={styles.songVisibility}>Visibility: {visibility}</p>
     </div>
   );
 };

@@ -1,19 +1,46 @@
-.title {
+.container {
+  background: #FBF5DD;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  position: sticky;
+  top: 80px;
+  background: #FBF5DD;
+  padding-top: 25px;
   text-align: center;
-  width: 100%; /* Ensures it takes up the full width of the parent */
+  z-index: 900;
+}
+
+.title {
   font-family: "Kanit", serif;
   font-weight: 500;
   font-style: normal;
+  margin: 0;
 }
 
 .songList {
   width: 90%;
-  margin: 0 auto;
+  margin: 20px auto;
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
   column-gap: 50px;
   row-gap: 20px;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
+}
+
+
+.footer {
+  padding: 20px 0;
+  text-align: center;
 }
