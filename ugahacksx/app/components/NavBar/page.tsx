@@ -4,6 +4,7 @@ import styles from "./navBar.module.css";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
+
 const NavBar = () => {
     const router = useRouter();
     const { user } = useUser(); // Get user data from Auth0

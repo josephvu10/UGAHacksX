@@ -1,6 +1,6 @@
 "use client";
 
-import SongPostCard from "../../components/SongPostCard";
+import WorkspaceCard from "../../components/workspaceCard/page";
 import styles from "./workspace.module.css";
 import GenBar from "../../components/genBar/page";
 import NavBar from "../../components/NavBar/page";
@@ -91,13 +91,13 @@ export default function Workspace() {
         <div className={styles.songList}>
           {userSongs.length > 0 ? (
             userSongs.map((userSong, index) => (
-              <SongPostCard
+              <WorkspaceCard
                 key={index}
                 title={userSong.title}
                 authorName={userSong.authorName}
                 genre={userSong.genre}
-                image={userSong.image}
-                audio={userSong.audio}
+                imageCID={userSong.image}
+                audioCID={userSong.audio}
                 prompt={userSong.prompt}
                 visibility={userSong.visibility}
               />

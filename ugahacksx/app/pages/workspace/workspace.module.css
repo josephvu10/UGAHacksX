@@ -11,13 +11,14 @@
 .container2 {
     text-align: center;
     padding: 20px;
+    min-height: 48vh;
 }
   
 .title {
     margin: 0;
     padding: 40px 0;
     display: flex;
-    font-size: 50px;
+    font-size: 40px;
     justify-content: center;
 }
   
@@ -26,3 +27,29 @@
     display: flex;
     justify-content: center;
 }
+
+.songPostCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: kanit;
+}
+
+.songImage {
+    width: 80%;
+    height: auto;
+}
+
+.songPostCard h2 {
+    margin-bottom: 0px;
+}
+
+.songPostCard p {
+    margin-bottom: 0px;
+}
+
