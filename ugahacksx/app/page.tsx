@@ -28,7 +28,15 @@ export default function Home() {
   const khoaTest = () => {
     router.push('/khoaTest');
   }
-
+  const handleGenerateSound = () => {
+    if (!user) {
+      // 🚀 Redirect to Auth0 Login if Not Logged In
+      router.push('/api/auth/login');
+    } else {
+      // ✅ Redirect to Workspace if Already Logged In
+      router.push('/pages/workspace');
+    }
+  };
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
@@ -42,7 +50,8 @@ export default function Home() {
           src={OIAUIA}
           alt="oia-uia"
         />
-        <h1 className={styles.title}> Slogan slogan slogan slogan </h1>
+        <h1 className={styles.title}> Express the Sound of Your Soul
+        </h1>
         <Image
           className={styles.image}
           src={OIAUIA}
@@ -52,7 +61,7 @@ export default function Home() {
 
       <div className={styles.genBarContainer}>
         <input type="text" placeholder="Generate sounds..." />
-        <button type="submit">Submit</button>
+        <button onClick={handleGenerateSound} type="button">Submit</button>
       </div>
     </div>
   );
