@@ -37,7 +37,9 @@ export default function songPosts() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.pageTitle}>Public Songs</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Public Songs</h1>
+      </div>
       <div className={styles.songList}>
         {songs.length > 0 ? (
           songs.map((song, index) => (
