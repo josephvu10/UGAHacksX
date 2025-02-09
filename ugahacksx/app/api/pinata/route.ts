@@ -8,7 +8,7 @@ const pinata = new PinataSDK({
   pinataJwt: process.env.PINATA_JWT,
   pinataGateway: "ugahacksx.mypinata.cloud",
 });
-let currentStep = "Starting..."; // Store the current step in memory
+let currentStep = "Idle"; // Store the current step in memory
 
 export async function POST(req: Request) {
   try {
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
       return new Response(JSON.stringify({ error: "Text is required" }), { status: 400 });
     }
     const updateStep = (step: string) => {
-      currentStep = step; // ✅ Update global step
+      currentStep = step; 
       console.log(`Step Updated: ${step}`); // Log progress
     };    
     const payload1 = {
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify(payload1),
     });
-    updateStep("🔄 Creating song...");
+    updateStep("Creating song...");
 
     const data1 = await soundResponse.json();
     if (!soundResponse.ok) {
@@ -55,12 +55,12 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify(payload2),
     });
-    updateStep("🎶 Composing song...");
+    updateStep("Composing song...");
     const data2 = await composeResponse.json();
     if (!composeResponse.ok) {
       throw new Error("Song Composition Failed");
     };
-    updateStep("⏳ Waiting for song composition...");
+    updateStep("Waiting for song composition...");
     const getComposeAPI = `https://public-api.beatoven.ai/api/v1/tasks/${data2.task_id}`;
     let finalSong = await fetch(getComposeAPI, {
       method: "GET",
@@ -92,7 +92,7 @@ export async function POST(req: Request) {
     }
     
     console.log("finished composing")
-    updateStep("✅ Song is ready! Fetching...");
+    updateStep("Song is ready! Fetching...");
 
     const songResponse = await fetch(finaldata.meta.track_url);
     if (!songResponse.ok) {
@@ -142,8 +142,8 @@ export async function POST(req: Request) {
 
     const { songTitles, genre } = await geminiResponse.json();
 
-    console.log("🎵 Song Titles:", songTitles);
-    console.log("🎼 Genre:", genre);
+    console.log("Song Titles:", songTitles);
+    console.log("Genre:", genre);
 
     // Get generated image
     const imageResponse = await fetch("http://localhost:3000/api/generate", {
@@ -159,7 +159,7 @@ export async function POST(req: Request) {
     }
     console.log("Printing Image Data");
 
-    updateStep("🚀 Uploading song to Pinata...");
+    updateStep("Uploading song to Pinata...");
 
     // Uploading to Pinata
     await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -205,7 +205,7 @@ export async function POST(req: Request) {
     if (!group4) {
       throw new Error("Failed to add to group");
     }
-    updateStep("✅ Song uploaded successfully!");
+    updateStep("Song uploaded successfully!");
     return new Response(JSON.stringify({ prompt: text }), { status: 200 });
   } catch (error) {
     console.error("Error:", error);
@@ -218,113 +218,3 @@ export async function POST(req: Request) {
 export async function GET() {
   return new Response(JSON.stringify({ step: currentStep }), { status: 200 });
 }
-// const pinataGateway = "https://ugahacksx.mypinata.cloud/ipfs/";
-
-// export async function GET(req: NextRequest) {
-//   try {
-//     //   const { searchParams } = new URL(req.url);
-//     //   const ipfsHash = searchParams.get("cid");
-//     // if (!ipfsHash) {
-//     //   throw new Error("Failed to fetch file from Pinata");
-//     // }// 🎯 STEP 1: Fetch List of All Files from Pinata API
-
-//     const pinataListResponse = await fetch("https://api.pinata.cloud/data/pinList?pageLimit=100", {
-//       method: "GET",
-//       headers: {
-//         "pinata_api_key": process.env.PINATA_API_KEY!,
-//         "pinata_secret_api_key": process.env.PINATA_SECRET_API_KEY!,
-
-//       },
-//     });
-//     if (!pinataListResponse.ok) {
-//       throw new Error("Failed to fetch file list from Pinata");
-//     }
-//     console.log("Here")
-
-//     const pinataList = await pinataListResponse.json();
-
-//     if (!pinataList.rows.length) {
-//       return new Response(JSON.stringify({ message: "No JSON files found" }), { status: 404 });
-//     }
-
-//     console.log(`✅ Found ${pinataList.rows.length} total files`);
-
-//     // 🎯 STEP 2: Filter Only JSON Files (Based on File Name or Metadata)
-//     console.log(pinataList.rows)
-//     const jsonFiles = pinataList.rows.filter((file) => file.mime_type === "application/json");
-
-//     if (jsonFiles.length === 0) {
-//       return new Response(JSON.stringify({ message: "No JSON files found" }), { status: 404 });
-//     }
-
-//     console.log(`📂 Fetching ${jsonFiles.length} JSON files...`);
-
-//     // 🎯 STEP 3: Fetch Each JSON File's Content from Pinata
-//     const jsonDataArray = await Promise.all(
-//       jsonFiles.map(async (file) => {
-//         await new Promise((resolve) => setTimeout(resolve, 500)); // ✅ Add a delay to avoid rate limits
-//         const cid = file.ipfs_pin_hash;
-//         console.log(`${pinataGateway}${cid}`)
-//         const response = await fetch(`${pinataGateway}${cid}`);
-
-//         if (!response.ok) {
-//           console.error(`❌ Failed to fetch JSON file: ${cid}`);
-//           return null;
-//         }
-
-//         const jsonData = await response.json();
-//         return { data: jsonData };
-//       })
-//     );
-
-//     // 🎯 STEP 4: Filter Out Any Failed Fetches
-//     const validJsonFiles = jsonDataArray.filter((file) => file !== null);
-
-//     console.log(`✅ Successfully fetched ${validJsonFiles.length} JSON files`);
-
-//     // 🎯 STEP 5: Fetch Image & Audio for Each Author
-//     const structuredData = await Promise.all(
-//       validJsonFiles.map(async ({ data }) => {
-//         try {
-//           const { authorName, title, genre, image, audio, prompt, visibility } = data;
-
-//           console.log(`🔄 Fetching media for: ${authorName}`);
-
-//           // Fetch image
-//           const imageUrl = `${pinataGateway}${image}`;
-//           const imageResponse = await fetch(imageUrl);
-//           if (!imageResponse.ok) throw new Error(`Failed to fetch image: ${image}`);
-//           const base64Image = await imageResponse.text();
-//           // Fetch audio
-//           const audioUrl = `${pinataGateway}${audio}`;
-//           const audioResponse = await fetch(audioUrl);
-//           const audioArrayBuffer = await audioResponse.arrayBuffer();
-//           const audioBlob = new Blob([audioArrayBuffer], { type: "audio/wav" });
-//           const audioBlobUrl = URL.createObjectURL(audioBlob); // ✅ Converts audio into a local Blob URL
-
-//           if (!audioResponse.ok) throw new Error(`Failed to fetch audio: ${audio}`);
-//           return {
-//             authorName,
-//             title,
-//             genre,
-//             image: `data:image/png;base64,${base64Image}`, // ✅ Convert Base64 to Image URL
-//             audio: audioUrl, // ✅ Use a Blob URL for the Audio
-//             prompt,
-//             visibility,
-
-//           };
-//         } catch (err) {
-//           console.error(`❌ Error processing:`, err);
-//           return null;
-//         }
-//       })
-//     );
-
-//     // 🎯 STEP 6: Return the Final Structured Data
-//     const filteredResults = structuredData.filter((entry) => entry !== null);
-//     return new Response(JSON.stringify(filteredResults), { status: 200 });
-
-//   } catch (error) {
-//     return new Response(JSON.stringify({ error: error }), { status: 500 });
-//   }
-// }
