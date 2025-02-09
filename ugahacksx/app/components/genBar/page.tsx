@@ -56,7 +56,7 @@ const GenBar = () => {
   }, [user]);
 
   return (
-    <div className={styles.genContainer}>
+    <div className={styles.genContainer}> 
       <input 
         type="text" 
         placeholder="Generate sounds..." 
@@ -67,6 +67,12 @@ const GenBar = () => {
       <button onClick={handleSubmit} className={styles.button}>
         Submit
       </button>
+      
+      <label className="toggle-switch">
+      <input type="checkbox"/>
+      <span className="slider"></span>
+      </label>
+      
     </div>
   );
 };
