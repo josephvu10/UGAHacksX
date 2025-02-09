@@ -17,7 +17,7 @@ export default function Workspace() {
       </div>
 
 
-    <section className = "container">
+    <section className = {styles.container2}>
     <h2>Create songs for your mood</h2>
     </section>
 
