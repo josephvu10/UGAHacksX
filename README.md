@@ -7,24 +7,25 @@
 - Joseph Vu
 
 ## Inspiration
-Our inspiration stemmed from meeting a wide variety of individuals throughout this school year. We found that language barriers, hearing disabilities, and even being mute has prevented people from properly expressing themselves. However, with using Sona, we give the ability to such individuals to express themselves simply with some phrases or lyrics they deem important to them.
+Music is one of the most powerful forms of self-expression, yet not everyone has equal access to creating it. We asked ourselves: How do we express ourselves through music? This question led us to explore the intersection of music, accessibility, and technology. Throughout this year, we’ve met individuals with different challenges—language barriers, hearing impairments, speech disabilities, and limited mobility—who struggle to express themselves through traditional means. With Sona, we wanted to bridge that gap and create an inclusive platform where anyone, regardless of their abilities, can create and share music effortlessly.
 
 ## What it does
-This web application allows users of various backgrounds, whether they are deaf, mute, or unable to play musical instruments, to generate any type of music with ease. Users are able to keep their music for themselves, or share them with the public for everyone to enjoy! 
+Sona is a web application designed to empower individuals who may face barriers in music creation. Whether someone is deaf, mute, or has limited mobility, Sona allows them to generate music using simple phrases or lyrics that hold meaning to them. Users can either keep their music private or share it with the world, fostering a community built on creative expression.
 
 ## How we built it
-We built Sona with the Next.js web framework for server-side rendering. The frontend was developed using HTML, CSS, and Javascript/Typescript for components to have multiple interactive features within our web application. Utilizing various Generative AIs, such as Beatoven, Gemini AI, and Stability AI, we seamlessly created related pieces to generate song cards for users. Pinata was our primary backend, to store all of our images, audio files, and user information. 
+We developed Sona using Next.js for its efficient server-side rendering, ensuring a smooth and responsive experience. The frontend was crafted with HTML, CSS, and TypeScript to provide an interactive and user-friendly interface. Generative AI tools played a crucial role in our project—Beatoven for AI-generated music, Gemini AI for lyrical suggestions, and Stability AI for generating album cover art. For decentralized file storage, we integrated Pinata, allowing us to securely store user-generated content, including images, audio files, and metadata.
 
 ## Challenges we ran into
-With it being our first time utilizing multiple APIs, more notably Generative AI APIs in our project, we struggled with the hassle of rate limiting, and even the scenarios where we were unable to use certain models due to being paywalled. In addition, being faced with learning and implementing a new database such as Pinata, we had to go through trials and tribulations in order to use it efficiently in our web application, often struggling with how we were to format and structure our groups in order for our file storage to be as efficient as possible. The novelty of new technology definitely made us fight tooth and nail to complete our project. 
+Working with multiple APIs, especially Generative AI, presented several challenges. We encountered rate limits, API restrictions, and paywalls that forced us to adapt and find alternative solutions. Additionally, integrating Pinata as a decentralized storage system required us to rethink how we structure and organize data efficiently. Learning and implementing these new technologies on the fly was a steep learning curve, but it ultimately strengthened our problem-solving skills.
 
 ## Accomplishments that we're proud of
-We're very proud of getting our hands dirty into Generative AI, with most of us never utilizing Artificial Intelligence APIs before UGA Hacks X. Furthermore, we managed to integrate Pinata into our program, a modern approach to cloud storage, where we learned how easy it can get to store and manage files using their grouping feature.
+We’re incredibly proud of diving into Generative AI and leveraging it in meaningful ways to enhance accessibility. For most of our team, this was our first time working with AI-powered APIs, and we successfully integrated them into our application. Another major achievement was implementing Pinata for decentralized storage, allowing us to manage files efficiently and securely. Most importantly, we created a platform that embodies inclusivity, ensuring that more people have the opportunity to express themselves through music.
+
 ## What we learned
-While developing Sona, we gained a lot of experiencing utilizing new tech on the fly, whether it be a new framework, new databases, such as Pinata, or even embracing the new Generative AIs. Furthermore, as this was the first time this team was working together, we had to make sure that we worked efficiently, where we learned how to effectively split tasks in bite sized chunks in order to make smooth progress. 
+Developing Sona taught us the importance of designing with accessibility in mind. We gained valuable experience working with new frameworks, databases, and AI models while also improving our ability to collaborate effectively as a team. Splitting tasks into manageable sections allowed us to streamline our workflow and maintain steady progress.
 
 ## What's next for Sona
-Looking more into the future, we would like to make sure our platform can expand to as much underprivileged people as possible, as well as making it a platform that everyone can enjoy. We hope to utilize even better Gen AIs to make the experience easier and seamless, so it could even be a revolutionary platform where people would flock to express themselves in ways they couldn't imagine before. 
+Looking ahead, we aim to expand Sona’s reach, making it an even more inclusive platform for individuals of all abilities. We want to refine our AI models, improve the user experience, and introduce new features that enhance accessibility. Our ultimate goal is to create a space where self-expression through music is truly universal—where anyone, regardless of their physical or communicative limitations, can create, share, and connect through the power of sound.
 
 ## How to run our app:
 
