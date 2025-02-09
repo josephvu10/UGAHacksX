@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./khoaTest.module.css";
 import NavBar from "../components/NavBar/page"; // Import the NavBar component
+import ProgressBar from "../components/progressBar/ProgessBar";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function khoaTest() {
@@ -31,22 +32,24 @@ export default function khoaTest() {
       visibility: "public",
     };
   
-    // Make a POST request to the API
-    fetch("/api/pinata", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestBody),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
+        // Make a POST request to the API
+        fetch("/api/pinata", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+          
+      };
+    
   useEffect(() => {
     // Fetch user data from Auth0
     if (user) {
@@ -58,6 +61,7 @@ export default function khoaTest() {
     <div className={styles.container}>
       <NavBar />
       <h1>Generate Song Titles & Genre</h1>
+      <ProgressBar />
       <input
         type="text"
         value={inputValue}
