@@ -37,3 +37,11 @@ npm install
 
 npm run dev
 
+## Frameworks and Technologies
+BeatovenAI API
+GeminiAI API
+StabilityAI API
+Pinata
+Next.JS
+React
+Auth0
