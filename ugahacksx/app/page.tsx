@@ -36,8 +36,17 @@ export default function Home() {
         <li className={styles.listItem}><button className={styles.button} onClick={handleClickSongPosts}>Go to Public Songs</button></li>
         <li className={styles.listItem}><button className={styles.button} onClick={handleClickWorkspace}>Go to Workspace</button></li>
         <li className={styles.listItem}><button className={styles.button} onClick={khoaTest}>Khoa's Test</button></li>
-        <a className={styles.link} href="/api/auth/login">Login</a>
+        {!user && <a className={styles.link} href="/api/auth/login">Login</a>}
+    {user && (
+      <>
         <a className={styles.link} href="/api/auth/logout">Logout</a>
+        <img 
+          src={user.picture} 
+          alt="User Profile" 
+          style={{ width: "40px", height: "40px", borderRadius: "50%", marginLeft: "10px" }}
+        />
+      </>
+    )}
       </ul>
 
       <div className={styles.titleContainer}>
@@ -48,18 +57,6 @@ export default function Home() {
         <input type="text" placeholder="Generate sounds..." />
         <button type="submit">Submit</button>
       </div>
-      {user ? (
-        <div>
-          <div>
-            <img src={user.picture} alt={user.name} />
-          </div>
-          <div>
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
-          </div>
-          <pre>{JSON.stringify(user, null, 2)}</pre>
-        </div>
-      ) : null}
 
     </div>
 
