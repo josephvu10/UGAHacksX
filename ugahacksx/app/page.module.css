@@ -5,9 +5,13 @@ body {
 
 
 .page {
+    background-image: url(https://media1.tenor.com/m/8NQEPccMPc4AAAAC/anime.gif);
+    background-size: cover;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top center;
+    height: max-content;
+    min-height: 100vh;
   }
 
   .button {
