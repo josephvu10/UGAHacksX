@@ -39,11 +39,6 @@
   transition: background-color 0.3s ease;
 }
 
-.genContainer button:hover {
-  background-color: #72c4d8;
-}
-
-/* Container for the toggle */
 .toggle-switch {
   position: relative;
   display: inline-block;
@@ -51,6 +46,7 @@
   height: 24px;
 }
 
+/* Hide default checkbox */
 .toggle-switch input {
   opacity: 0;
   width: 0;
@@ -67,6 +63,7 @@
   transition: background-color 0.3s;
 }
 
+/* The circular slider */
 .slider::before {
   content: "";
   position: absolute;
@@ -79,10 +76,10 @@
   transition: transform 0.3s;
 }
 
-.toggle-switch input:checked+.slider {
+.toggle-switch input:checked ~ .slider {
   background-color: #4caf50;
 }
 
-.toggle-switch input:checked+.slider::before {
+.toggle-switch input:checked ~ .slider::before {
   transform: translateX(26px);
 }

@@ -1,13 +1,19 @@
-.container1 {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: #f9f9f9; 
-}
-  
+    .container1 {
+        background-image: url("../../public/lavendar.png");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        height: 40vh;
+        padding: 20px;
+        font-family: kanit, sans-serif; 
+    }
+      
+
 .container2 {
     text-align: center;
     padding: 20px;
@@ -19,6 +25,7 @@
     padding: 40px 0;
     display: flex;
     font-size: 40px;
+    text-shadow: 3px 3px 2px #474747;
     justify-content: center;
 }
   
@@ -29,7 +36,7 @@
 }
 
 .songList1 {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: grid;
     column-gap: 50px;

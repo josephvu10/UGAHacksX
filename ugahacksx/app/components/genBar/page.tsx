@@ -1,7 +1,7 @@
 "use client";
 import styles from "./genBar.module.css";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 
 const GenBar = () => {
   const [inputValue, setInputValue] = useState(""); // State for input field
@@ -10,6 +10,12 @@ const GenBar = () => {
   const { user } = useUser();
   const [userId, setUserId] = useState("");
   const [nickname, setNickname] = useState("");
+
+  const [switchState, setSwitchState] = useState(true);  
+  function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
+    console.log("---", e.target.checked);
+    setSwitchState(!switchState);
+  }
 
   // Handles changes in the input field
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,12 +73,12 @@ const GenBar = () => {
       <button onClick={handleSubmit} className={styles.button}>
         Submit
       </button>
-      
+
       <label className="toggle-switch">
-      <input type="checkbox"/>
-      <span className="slider"></span>
-      </label>
-      
+  <input type="checkbox" />
+  <span className="slider"></span>
+</label>
+  
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./workspaceCard.module.css"
+import styles from "./workspaceCard.module.css"; 
 
 interface WorkspaceCardProps {
   title: string;
