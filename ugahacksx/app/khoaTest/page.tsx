@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styles from "./khoaTest.module.css";
 
-export default function khoaTest() {
+export default function KhoaTest() {
   const [inputValue, setInputValue] = useState("");
   const [songTitles, setSongTitles] = useState<string[]>([]); // Store song titles
   const [genre, setGenre] = useState<string | null>(null); // Store genre
@@ -57,8 +57,11 @@ export default function khoaTest() {
   };
 
   return (
-    <div className={styles.container}>
+    <div>
+    <div className={styles.titleContainer}>
       <h1>Generate Song Titles & Genre</h1>
+    </div>
+    <div className={styles.container}>
       <input
         type="text"
         value={inputValue}
@@ -66,10 +69,12 @@ export default function khoaTest() {
         placeholder="Enter a theme or idea"
         className={styles.input}
       />
-      <button onClick={handleSubmit} className={styles.button}>
+      <button onClick={handleSubmit} className={styles.genbutton}>
         Generate
       </button>
 
+      </div>
+      
       {/* Display the generated song titles and genre */}
       <div className={styles.responseContainer}>
         {songTitles.length > 0 && (
@@ -92,6 +97,7 @@ export default function khoaTest() {
           </>
         )}
       </div>
+    
     </div>
   );
 }

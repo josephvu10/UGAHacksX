@@ -1,6 +1,6 @@
 "use client";
 
-import Card from "../Card"
+import Card from "../../components/WorkspaceCard"
 import styles from "./workspace.module.css";
 import GenBar from "../../components/genBar/page";
 

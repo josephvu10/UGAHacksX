@@ -59,6 +59,10 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
+
+  .link:active {
+    transform: scale(0.98);
+  }
   
   .list {
     list-style-type: none;
@@ -67,6 +71,7 @@ body {
     overflow: hidden;
     background-color: #99a8c0;
   }
+  
   .listItem {
     float: left;
   }
