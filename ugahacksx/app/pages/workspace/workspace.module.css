@@ -1,0 +1,28 @@
+.container1 {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #f9f9f9; 
+}
+  
+.container2 {
+    text-align: center;
+    padding: 20px;
+}
+  
+.title {
+    margin: 0;
+    padding: 40px 0;
+    display: flex;
+    font-size: 50px;
+    justify-content: center;
+}
+  
+.genBarContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
