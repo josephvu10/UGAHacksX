@@ -5,8 +5,8 @@ interface WorkspaceCardProps {
   title: string;
   authorName: string;
   genre: string;
-  imageCID: string;
-  audioCID: string;
+  image: string;
+  audio: string;
   prompt: string;
   visibility: string;
 }
@@ -15,33 +15,35 @@ const WorkspaceCard: React.FC<WorkspaceCardProps> = ({
   title,
   authorName,
   genre,
-  imageCID,
-  audioCID,
+  image,
+  audio,
   prompt,
   visibility,
 }) => {
   const pinataGateway = "ugahacksx.mypinata.cloud";
   
   return (
-    <div className={styles.songPostCard}>
-
-      {imageCID ? (
-        <img src={imageCID} alt={title} className={styles.songImage} />
+    <div className="song-post-card">
+      {/* 🎵 Render Image (Show Loading if Not Ready) */}
+      {image ? (
+        <img src={image} alt={title}/>
       ) : (
         <p>Loading image...</p>
       )}
+      <h2 className="song-title">{title}</h2>
+      <p className="song-author">by {authorName}</p>
+      <p className="song-genre">Genre: {genre}</p>
+      {/* 🎧 Render Audio Player (Show Loading if Not Ready) */}
+      {audio ? (
+        <audio controls>
+          <source src={audio} type="audio/wav" />
 
-      <h2 className={styles.songTitle}>{title}</h2>
-      <p className={styles.songAuthor}>by {authorName}</p>
-      <p className={styles.songGenre}>Genre: {genre}</p>
-      {audioCID ? (
-        <audio controls className={styles.audioPlayer}>
-          <source src={audioCID} type="audio/wav" />
           Your browser does not support the audio element.
         </audio>
       ) : (
         <p>Loading audio...</p>
       )}
+
 
       <p className={styles.songPrompt}>Prompt: {prompt}</p>
       <p className={styles.songVsibility}>Visibility: {visibility}</p>

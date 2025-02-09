@@ -24,7 +24,7 @@ export default function Workspace() {
   const [userSongs, setUserSongs] = useState<SongData[]>([]);
   const [songs, setSongs] = useState<SongData[]>([]);
   const { user, isLoading } = useUser();
-  const [currentStep, setCurrentStep] = useState("Starting...");
+  const [currentStep, setCurrentStep] = useState("");
   
 
   // Fetch all songs from API
@@ -65,10 +65,9 @@ export default function Workspace() {
         }
       };
   
-      // ✅ Poll every 2 seconds to get the latest step
-      const interval = setInterval(fetchStep, 1000);
+      const interval = setInterval(fetchStep, 2000);
   
-      return () => clearInterval(interval); // Cleanup on unmount
+      return () => clearInterval(interval); 
     }, []);
 
   return (
@@ -86,8 +85,8 @@ export default function Workspace() {
 
 
       <div>
-       <h2>Current Step:</h2>
-        <p>{currentStep}</p>
+       <h2 className={styles.status}>Status: <a>{currentStep}</a></h2>
+
       </div>
 
       <section className={styles.container2}>
@@ -101,8 +100,8 @@ export default function Workspace() {
                 title={userSong.title}
                 authorName={userSong.authorName}
                 genre={userSong.genre}
-                imageCID={userSong.image}
-                audioCID={userSong.audio}
+                image={userSong.image}
+                audio={userSong.audio}
                 prompt={userSong.prompt}
                 visibility={userSong.visibility}
               />
