@@ -7,10 +7,10 @@ import styles from "./songPosts.module.css";
 
 interface SongData {
   title: string;
-  author: string;
+  authorName: string;
   genre: string;
-  imageCID: string;
-  audioCID: string;
+  image: string;
+  audio: string;
   prompt: string;
   visibility: string;
 }
@@ -21,13 +21,13 @@ export default function songPosts() {
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        // Fetch song data from Pinata or backend
-        const response = await fetch("/api/songs"); // Replace with your actual API
-        const data: SongData[] = await response.json();
-        
-        // Filter songs with visibility set to "public"
-        const publicSongs = data.filter(song => song.visibility === "public");
-        setSongs(publicSongs);
+       // Fetch song data from backend API
+       const response = await fetch("/api/pinata");
+       const data: SongData[] = await response.json();
+
+       // Update state
+       setSongs(data);
+      
       } catch (error) {
         console.error("Error fetching songs:", error);
       }
@@ -39,14 +39,25 @@ export default function songPosts() {
   return (
     <div className={styles.container}>
       <NavBar />
-      <h1 className={styles.pageTitle}>Public Songs</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Public Songs</h1>
+      </div>
       <div className={styles.songList}>
         {songs.length > 0 ? (
           songs.map((song, index) => (
-            <SongPostCard key={index} {...song} />
+          <SongPostCard
+          key={index}
+          title={song.title}
+          authorName={song.authorName}
+          genre={song.genre}
+          image={song.image}  // Pass Image CID
+          audio={song.audio}  // Pass Audio CID
+          prompt={song.prompt}
+          visibility={song.visibility}
+          />
           ))
         ) : (
-          <p>No public songs available.</p>
+          <p>Fetching Public Songs...</p>
         )}
       </div>
     </div>

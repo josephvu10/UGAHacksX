@@ -120,3 +120,19 @@ body {
 .genBarContainer button:hover {
   background-color: #72c4d8;
 }
+
+.titleContainer {
+  display: flex;
+  flex-direction: row; /* Makes it a row instead of a column */
+  align-items: center; /* Align items vertically */
+  justify-content: center; /* Centers content horizontally */
+  gap: 20px; /* Adds space between elements */
+  margin-top: 20px;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  padding-top: 200px;
+}
+
