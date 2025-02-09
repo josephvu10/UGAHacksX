@@ -26,8 +26,9 @@ export default function Home() {
     <div className={styles.page}>
       <ul className= {styles.list}>
       <li className={styles.listItem}><button className={styles.button} onClick={handleClick}>Go to Example Usage</button></li>
-      <li className={styles.listItem}><button className={styles.button} onClick={handleClickWorkspace}>Go to Blog</button></li>
+      <li className={styles.listItem}><button className={styles.button} onClick={handleClickSongPosts}>Go to Public Songs</button></li>
       <li className={styles.listItem}><button className={styles.button} onClick={handleClickWorkspace}>Go to Workspace</button></li>
+      <li className={styles.listItem}><button className={styles.button} onClick={khoaTest}>Khoa's Test</button></li>
       <a className={styles.link} href="/api/auth/login">Login</a>
       <a className={styles.link} href="/api/auth/logout">Logout</a>
       </ul>
