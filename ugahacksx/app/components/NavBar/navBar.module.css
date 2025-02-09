@@ -1,0 +1,87 @@
+/* Container for the entire navbar */
+.navContainer {
+  width: 100%;
+  background-color: #99a8c0;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Flexbox for horizontal navbar layout */
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+/* Main title (e.g., "Sound Genie") */
+.navTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navTitle:hover {
+  color: #ece4f3;
+  transform: scale(1.05);
+}
+
+/* List-based navigation styling */
+.navItems {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  background-color: #99a8c0;
+}
+
+.navItem {
+  float: left;
+}
+
+/* Styled buttons inside the list */
+.navButton {
+  background-color: #99cedb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: #72c4d8;
+  transform: scale(1.05);
+}
+
+.navButton:active {
+  transform: scale(0.98);
+}
+
+.navLink {
+  display: inline-block; /* Makes the link behave like a button */
+  background-color: #99cedb;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navLink:hover {
+  background-color: #72c4d8;
+  transform: scale(1.05);
+}
+
+.navLink:active {
+  transform: scale(0.98);
+}
