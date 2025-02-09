@@ -24,7 +24,7 @@ const SongPostCard: React.FC<SongPostCardProps> = ({
     <div className={styles.songPostCard}>
       {/* 🎵 Render Image (Show Loading if Not Ready) */}
       {image ? (
-        <img src={image} alt={title} className="song-image" />
+        <img src={image} alt={title} className={styles.songImage} />
       ) : (
         <p>Loading image...</p>
       )}
