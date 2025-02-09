@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./SongPostCard/SongPostCard.module.css";
+import styles from "./SongPostCard.module.css";
 interface SongPostCardProps {
   title: string;
   authorName: string;
