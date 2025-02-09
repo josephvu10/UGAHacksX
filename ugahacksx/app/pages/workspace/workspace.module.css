@@ -13,6 +13,25 @@
     padding: 20px;
     min-height: 48vh;
 }
+.status {
+    font-size: 20px;
+    text-align: center;
+  }
+.status a {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #008000, #2E8B57, #3CB371, #66CDAA);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 3s ease infinite;
+  }
+  
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
   
 .title {
     margin: 0;

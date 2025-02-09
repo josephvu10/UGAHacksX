@@ -4,8 +4,8 @@ interface WorkspaceCardProps {
   title: string;
   authorName: string;
   genre: string;
-  imageCID: string;
-  audioCID: string;
+  image: string;
+  audio: string;
   prompt: string;
   visibility: string;
 }
@@ -14,8 +14,8 @@ const WorkspaceCard: React.FC<WorkspaceCardProps> = ({
   title,
   authorName,
   genre,
-  imageCID,
-  audioCID,
+  image,
+  audio,
   prompt,
   visibility,
 }) => {
@@ -23,14 +23,24 @@ const WorkspaceCard: React.FC<WorkspaceCardProps> = ({
   
   return (
     <div className="song-post-card">
-      <img src={`${pinataGateway}${imageCID}`} alt={title} className="song-image" />
+      {/* 🎵 Render Image (Show Loading if Not Ready) */}
+      {image ? (
+        <img src={image} alt={title}/>
+      ) : (
+        <p>Loading image...</p>
+      )}
       <h2 className="song-title">{title}</h2>
       <p className="song-author">by {authorName}</p>
       <p className="song-genre">Genre: {genre}</p>
-      <audio controls className="song-audio">
-        <source src={`${pinataGateway}${audioCID}`} type="audio/wav" />
-        Your browser does not support the audio element.
-      </audio>
+      {/* 🎧 Render Audio Player (Show Loading if Not Ready) */}
+      {audio ? (
+        <audio controls>
+          <source src={audio} type="audio/wav" />
+          Your browser does not support the audio element.
+        </audio>
+      ) : (
+        <p>Loading audio...</p>
+      )}
       <p className="song-prompt">Prompt: {prompt}</p>
       <p className="song-visibility">Visibility: {visibility}</p>
     </div>
