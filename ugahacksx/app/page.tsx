@@ -24,10 +24,6 @@ export default function Home() {
     router.push('pages/workspace');
   };
 
-  //we should make this the homepage with the slogan and make it similar to the Suno homepage
-  const khoaTest = () => {
-    router.push('/khoaTest');
-  }
   const handleGenerateSound = () => {
     if (!user) {
       // 🚀 Redirect to Auth0 Login if Not Logged In
