@@ -66,7 +66,7 @@ export default function Workspace() {
       <section className={styles.container2}>
         <h2>Create songs for your mood</h2>
 
-        <div className={styles.songList}>
+        <div className={styles.songList1}>
           {userSongs.length > 0 ? (
             userSongs.map((userSong, index) => (
               <WorkspaceCard
