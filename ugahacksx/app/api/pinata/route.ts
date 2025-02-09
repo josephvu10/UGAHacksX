@@ -66,7 +66,13 @@ export async function POST(req: Request) {
     if (!finalSong.ok) {
       throw new Error("Final Song Creation Failed");
     }
+    let attempts = 0;
+    const maxAttempts = 20; // Prevent infinite loop
     while (finaldata.status != "composed") {
+      if (attempts++ > maxAttempts) {
+        console.log("Max attempts reached");
+        break;
+      }
       await new Promise((resolve) => setTimeout(resolve, 4000));
       const finalSong = await fetch(getComposeAPI, {
         method: "GET",
