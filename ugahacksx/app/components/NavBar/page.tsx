@@ -30,7 +30,7 @@ const NavBar = () => {
                             onClick={() => router.push("/pages/songPosts")}
                             className={styles.navButton}
                         >
-                            Go to Public Songs
+                            Public Songs
                         </button>
                     </li>
                     {/* Auth0 Login/Logout as Styled Links */}
