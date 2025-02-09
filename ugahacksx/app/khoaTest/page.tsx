@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./khoaTest.module.css";
+import NavBar from "../components/NavBar/page";
 
 export default function khoaTest() {
   const [inputValue, setInputValue] = useState("");
@@ -58,6 +59,7 @@ export default function khoaTest() {
 
   return (
     <div className={styles.container}>
+      <NavBar />
       <h1>Generate Song Titles & Genre</h1>
       <input
         type="text"

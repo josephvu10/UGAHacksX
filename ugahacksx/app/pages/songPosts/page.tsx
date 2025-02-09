@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from "react";
-import SongPostCard from "../../components/SongPostCard";
+import SongPostCard from "../../components/SongPostCard/page";
 import NavBar from "../../components/NavBar/page";
 import styles from "./songPosts.module.css";
 

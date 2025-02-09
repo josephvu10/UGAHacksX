@@ -5,6 +5,7 @@
   padding: 10px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   font-family: Kanit, sans-serif;
+  position: sticky;  top: 0;
 }
 
 /* Flexbox for horizontal navbar layout */
