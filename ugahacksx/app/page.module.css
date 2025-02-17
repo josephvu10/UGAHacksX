@@ -161,6 +161,24 @@ background-position: 0 0;
   background-color: #eee8d2;
 }
 
+.imageFlower {
+  position:absolute; 
+  top: 300px; 
+  left: 50px;
+}
+
+.imageFlower2 {
+  position:absolute; 
+  top: 300px; 
+  left: 1200px;
+}
+
+.imageCircle {
+  position:absolute; 
+  top: 940px; 
+  left: 340px; 
+}
+
 .titleContainer {
   display: flex;
   flex-direction: column; /* Makes it a row instead of a column */

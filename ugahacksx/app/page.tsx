@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import NavBar from './components/NavBar/page'; // Import the NavBar component
 import OIAUIA from './public/oia-uia.gif';
+import FLOWER from './public/flower2.gif';
+import CIRCLE from './public/circle.gif';
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
 </style>
@@ -49,6 +51,23 @@ export default function Home() {
         <h1 className = {styles.title2}> Sound of Your Soul</h1>
       </div>
 
+      <div className={styles.imageFlower}>
+        <Image
+          src={FLOWER}
+          alt="flower"
+          width={150}
+          height={140}
+        />
+      </div>
+      <div className={styles.imageFlower2}>
+        <Image
+          src={FLOWER}
+          alt="flower"
+          width={150}
+          height={140}
+        />
+      </div>
+
       <div className={styles.genBarContainer}>
         <input type="text" placeholder="Generate sounds..." />
         <button onClick={handleGenerateSound} type="button">Submit</button>
@@ -67,6 +86,14 @@ export default function Home() {
 
     <div className = {styles.aboutContainer}>
       <h1 className = {styles.aboutHighlight}> A Little More About The App </h1>
+      <div className={styles.imageCircle}>
+        <Image
+          src={CIRCLE}
+          alt="circle"
+          width={182}
+          height={140}
+        />
+      </div>
       <div className = {styles.aboutContainerRow}>
       <div className = {styles.about}> 
         <h2> Inspiration </h2>
