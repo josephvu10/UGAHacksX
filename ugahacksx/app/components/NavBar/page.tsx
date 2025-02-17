@@ -22,7 +22,7 @@ const NavBar = () => {
                                 onClick={() => router.push("/pages/workspace")}
                                 className={styles.navButton}
                             >
-                                Go to Workspace
+                                Workspace
                             </button>
                         )}
                     </li>
