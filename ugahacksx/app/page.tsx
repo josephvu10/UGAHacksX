@@ -7,6 +7,7 @@ import NavBar from './components/NavBar/page'; // Import the NavBar component
 import OIAUIA from './public/oia-uia.gif';
 import FLOWER from './public/flower2.gif';
 import CIRCLE from './public/circle.gif';
+import ARROWDOWN from './public/arrowDown.png';
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
 </style>
@@ -49,29 +50,15 @@ export default function Home() {
       <div className={styles.titleContainer}>
         <h1 className ={styles.title1}> Express the </h1> 
         <h1 className = {styles.title2}> Sound of Your Soul</h1>
-      </div>
 
-      <div className={styles.imageFlower}>
-        <Image
-          src={FLOWER}
-          alt="flower"
-          width={150}
-          height={140}
-        />
-      </div>
-      <div className={styles.imageFlower2}>
-        <Image
-          src={FLOWER}
-          alt="flower"
-          width={150}
-          height={140}
-        />
-      </div>
 
       <div className={styles.genBarContainer}>
         <input type="text" placeholder="Generate sounds..." />
         <button onClick={handleGenerateSound} type="button">Submit</button>
       </div>
+
+      </div>
+      
 
       <div className={styles.scrollContainer}>   
         <div className={styles.scrollText}>
@@ -81,19 +68,19 @@ export default function Home() {
           How We Built it? 
         </div>
       </div>
-        
+    
 
 
     <div className = {styles.aboutContainer}>
-      <h1 className = {styles.aboutHighlight}> A Little More About The App </h1>
-      <div className={styles.imageCircle}>
-        <Image
-          src={CIRCLE}
-          alt="circle"
-          width={182}
-          height={140}
-        />
-      </div>
+    <h1 className={styles.aboutTitle}>
+  {"A Little More About The App".split("").map((letter, index) => (
+    <span key={index} className={styles.waveLetter} style={{ animationDelay: `${index * 0.1}s` }}>
+      {letter}
+    </span>
+  ))}
+</h1>
+
+
       <div className = {styles.aboutContainerRow}>
       <div className = {styles.about}> 
         <h2> Inspiration </h2>
@@ -118,6 +105,19 @@ export default function Home() {
           For decentralized file storage, we integrated Pinata, allowing us to securely store user-generated content, including images, audio files, and metadata. </p>
       </div>
       </div>
+
+      <div className={styles.aboutCaptionContainer}>
+        <p className = {styles.aboutCaption1}> Scroll Down </p>
+        <p className = {styles.aboutCaption2}> to Learn More! </p>
+      </div>
+      
+      <div className={styles.arrowDownContainer}>
+      <Image 
+         src={ARROWDOWN} 
+         alt="arrow down" 
+         width={135}
+         height={165}/>
+       </div>
 
       <div className={styles.groupBigContainer}>
       <div className={styles.groupContainer}>
