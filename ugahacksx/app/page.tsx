@@ -92,11 +92,49 @@ export default function Home() {
       </div>
       </div>
 
-      <div className= {styles.groupBigContainer}>
-      <div className = {styles.groupContainer}>
-      <h1> Who Are We </h1>
+      <div className={styles.groupBigContainer}>
+      <div className={styles.groupContainer}>
+        <h1>Who Are We</h1>
+        <div className={styles.imageRow}>
+          <div className={styles.imageContainer}>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/d/d4/Donkey_Kong_character.png"
+              alt="Donkey Kong"
+              className={styles.characterImage}
+            />
+            <p className={styles.caption}>Khoa Le</p>
+            <p className={styles.captionDescription}>I'm just a chill dude</p>
+          </div>
+          <div className={styles.imageContainer}>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/d/db/Yoshi_%28Nintendo_character%29.png"
+              alt="Yoshi"
+              className={styles.characterImageYoshi}
+            />
+            <p className={styles.caption}>Daniel</p>
+            <p className={styles.captionDescription}>OIAUIA</p>
+          </div>
+          <div className={styles.imageContainer}>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/b/be/Luigi_by_Shigehisa_Nakaue.png"
+              alt="Luigi"
+              className={styles.characterImageLuigi}
+            />
+            <p className={styles.caption}>Joseph</p>
+            <p className={styles.captionDescription}>bonk smash bonk</p>
+          </div>
+          <div className={styles.imageContainer}>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/b/b9/Toad_by_Shigehisa_Nakaue.png"
+              alt="Toad"
+              className={styles.characterImage}
+            />
+            <p className={styles.caption}>Lauren</p>
+            <p className={styles.captionDescription}>Last seen: at home</p>
+          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
       <div className={styles.footerContainer}>
         <div className={styles.footerRow}>

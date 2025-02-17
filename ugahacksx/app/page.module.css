@@ -271,14 +271,67 @@ background-position: 0 0;
 .groupBigContainer {
   background: linear-gradient(to bottom, #d9e8e6, #FBF5DD);
 }
+
 .groupContainer{
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   background-color: #FBF5DD;
   border-radius: 75px;
   min-height: 80vh; /* Full screen height */
+}
+
+.groupContainer h1 {
+  font-family: "Ballet", serif;
+  font-weight: 400;
+  font-size: 70px;
+  margin-top: 150px;
+}
+
+.imageRow {
+  display: flex;
+  gap: 120px;
+  margin-top: 40px;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.characterImage {
+  width: 220px; 
+  height: 220px;
+  border-radius: 50%;
+  border: 3px solid #000;
+  object-fit: cover;
+  background-color: #fff;
+}
+
+.characterImageYoshi, .characterImageLuigi {
+  width: 220px; 
+  height: 220px;
+  border-radius: 50%;
+  border: 3px solid #000;
+  background-color: #fff;
+  object-fit: cover;
+  object-position: top;
+}
+
+.caption {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 25px; 
+  font-family: Kanit, sans-serif;
+}
+
+.captionDescription {
+  font-family: Kanit, sans-serif;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 150px; 
 }
 
 .footerContainer {
