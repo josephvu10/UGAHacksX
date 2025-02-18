@@ -4,10 +4,11 @@ import styles from "./page.module.css";
 import { useRouter } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import NavBar from './components/NavBar/page'; // Import the NavBar component
-import OIAUIA from './public/oia-uia.gif';
 import FLOWER from './public/flower2.gif';
-import CIRCLE from './public/circle.gif';
+import PLANE from './public/paperPlane.png';
 import ARROWDOWN from './public/arrowDown.png';
+import NOTES from './public/notes.png';
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
 </style>
@@ -47,6 +48,7 @@ export default function Home() {
     <div className={styles.page}>
 
       <NavBar />
+      <div className={styles.backgroundContainer}>
       <div className={styles.titleContainer}>
         <h1 className ={styles.title1}> Express the </h1> 
         <h1 className = {styles.title2}> Sound of Your Soul</h1>
@@ -57,9 +59,13 @@ export default function Home() {
         <button onClick={handleGenerateSound} type="button">Submit</button>
       </div>
 
+      <div className={styles.nameTitle}>
+        <h1> Sona </h1>
       </div>
       
+      </div>
 
+    </div> 
       <div className={styles.scrollContainer}>   
         <div className={styles.scrollText}>
           Learn More About the App! •
@@ -82,6 +88,13 @@ export default function Home() {
 
 
       <div className = {styles.aboutContainerRow}>
+      <div className={styles.planeContainer}>
+      <Image 
+         src={PLANE} 
+         alt="paper plane" 
+         width={160}
+         height={125}/>
+       </div>
       <div className = {styles.about}> 
         <h2> Inspiration </h2>
         <p> Music is one of the most powerful forms of self-expression, yet not everyone has equal access to creating it. 
@@ -90,6 +103,14 @@ export default function Home() {
           With Sona, we wanted to bridge that gap and create an inclusive platform where anyone, regardless of their abilities, can create and share music effortlessly. </p>
       </div>
 
+      <div className={styles.notesContainer}>
+      <Image 
+         src={NOTES} 
+         alt="writting notes" 
+         width={160}
+         height={160}/>
+       </div>
+
       <div className = {styles.does}> 
       <h2> Purpose </h2>
         <p> Sona is a web application designed to empower individuals who may face barriers in music creation. 
@@ -97,6 +118,7 @@ export default function Home() {
           Users can either keep their music private or share it with the world, fostering a community built on creative expression. </p>
       </div>
       </div>
+
       <div className = {styles.built}>
       <h2> Development </h2>
         <p> We developed Sona using Next.js for its efficient server-side rendering, ensuring a smooth and responsive experience. 

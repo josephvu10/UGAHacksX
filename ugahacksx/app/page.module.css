@@ -35,12 +35,18 @@ body {
     opacity: 0; /* Initially hidden */
     transition: opacity 0.5s ease-out; /* Smooth transition */
     animation: fadeInUp 1s 0.5s forwards; /* Fade in with delay */
+    
+  }
+
+  .backgroundContainer {
+    background-image: url('./public/background1.jpg')
   }
 
   .title1 {
     font-family: "Ballet", serif;
     font-weight: 400;
-    font-style: regular400;
+    font-style:italic; 
+    font-optical-sizing: auto;
     font-size: 100px;
     text-align: center;
     margin:0; 
@@ -130,6 +136,21 @@ background-position: 0 0;
     float: left;
   }
   
+.nameTitle {
+  font-family: "Ballet", serif;
+    font-weight: 400;
+    font-style: italic; 
+    font-size: 15px;
+    text-align: center;
+  margin-bottom: 105px; 
+  letter-spacing: 10px;
+  color:#333; 
+}
+
+.nameTitle:hover {
+  color: #A6CDC6;
+}
+
 .genBarContainer {
   display: flex;
   align-items: center;
@@ -141,7 +162,6 @@ background-position: 0 0;
   background-color: #A6CDC6;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-bottom: 210px; 
 }
 
 .genBarContainer input[type="text"] {
@@ -284,6 +304,13 @@ background-position: 0 0;
   animation: waveAnimation 1.5s infinite ease-in-out;
 }
 
+.planeContainer {
+  position: absolute;
+  left: 76px;
+  top: 1145px;
+  transform: rotate(10deg);
+}
+
 @keyframes waveAnimation {
   0%, 100% {
     transform: translateY(0);
@@ -318,6 +345,14 @@ background-position: 0 0;
   text-align: center; /* Center text */
   border: 1px solid #ddd; /* Subtle border */
 }
+
+.notesContainer {
+  position: absolute;
+  left: 1165px;
+  top: 1440px;
+  transform: rotate(10deg);
+}
+
 
 .built{
   background-color: #fff; /* White background */

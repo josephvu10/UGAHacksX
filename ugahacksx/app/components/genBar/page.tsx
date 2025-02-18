@@ -4,28 +4,18 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import React, { useState, useEffect, ChangeEvent } from "react";
 
 const GenBar = () => {
-  const [inputValue, setInputValue] = useState(""); // Input field state
-  const [songTitles, setSongTitles] = useState<string[]>([]);
-  const [genre, setGenre] = useState<string | null>(null);
+  const [inputValue, setInputValue] = useState("");
   const { user } = useUser();
-  const [userId, setUserId] = useState("");
-  const [nickname, setNickname] = useState("");
-  const [visibility, setVisibility] = useState("private"); // Default: private
+  const [visibility, setVisibility] = useState("private");
+  const [switchState, setSwitchState] = useState(false);
 
-  const [switchState, setSwitchState] = useState(true);  
   function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
-    console.log("---", e.target.checked);
-    setSwitchState(!switchState);
+    setSwitchState(e.target.checked);
+    setVisibility(e.target.checked ? "public" : "private");
   }
 
-  // Handles changes in the input field
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-  };
-
-  // Handle checkbox toggle
-  const handleToggleChange = () => {
-    setVisibility((prev) => (prev === "private" ? "public" : "private"));
   };
 
   const handleSubmit = () => {
@@ -38,12 +28,11 @@ const GenBar = () => {
       text: inputValue,
       sub: user ? user.sub : null,
       nickname: user ? user.nickname : null,
-      visibility, // Updated to reflect checkbox state
+      visibility,
     };
 
     console.log("Submitting:", requestBody);
 
-    // Make a POST request to the API
     fetch("/api/pinata", {
       method: "POST",
       headers: {
@@ -60,14 +49,6 @@ const GenBar = () => {
       });
   };
 
-  // Fetch user data from Auth0 when available
-  useEffect(() => {
-    if (user) {
-      setUserId(user.sub ?? "");
-      setNickname(user.nickname ?? "");
-    }
-  }, [user]);
-
   return (
     <div className={styles.genContainer}>
       <input
@@ -80,15 +61,17 @@ const GenBar = () => {
       <button onClick={handleSubmit} className={styles.button}>
         Submit
       </button>
-
-      <label className={styles.label} >
-        <p> Private? </p>
+      <div className={styles.toggleContainer}>
+        <span className={styles.toggleLabel}>Public?</span>
+        <label className={styles.toggleSwitch}>
+          <input
+            type="checkbox"
+            checked={switchState}
+            onChange={handleOnChange}
+          />
+          <span className={styles.slider}></span>
         </label>
-      <label className="toggle-switch">
-      <input type="checkbox" />
-        <span className="slider"></span>
-        </label>
-
+      </div>
     </div>
   );
 };

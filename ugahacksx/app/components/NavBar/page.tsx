@@ -13,7 +13,7 @@ const NavBar = () => {
         <div className={styles.navContainer}>
             <div className={styles.navBar}>
                 <h1 onClick={() => router.push("/")} className={styles.navTitle}>
-                    Sound Genie
+                    Sona
                 </h1>
                 <ul className={styles.navItems}>
                     <li className={styles.navItem}>
