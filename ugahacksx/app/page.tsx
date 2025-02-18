@@ -129,7 +129,7 @@ export default function Home() {
               alt="Donkey Kong"
               className={styles.characterImage}
             />
-            <p className={styles.caption}>Khoa Le</p>
+            <p className={styles.caption}>Khoa</p>
             <p className={styles.captionDescription}>I'm just a chill dude</p>
           </div>
           <div className={styles.imageContainer}>

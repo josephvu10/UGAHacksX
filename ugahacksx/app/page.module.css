@@ -324,7 +324,7 @@ background-position: 0 0;
   border-radius: 15px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
   padding: 50px; /* Space inside the card */
-  max-width: 1050px; /* Adjust width as needed */
+  max-width: 1080px; /* Adjust width as needed */
   margin: 20px auto; /* Center the card */
   text-align: center; /* Center text */
   border: 1px solid #ddd; /* Subtle border */
