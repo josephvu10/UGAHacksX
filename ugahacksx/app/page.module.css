@@ -135,21 +135,7 @@ background-position: 0 0;
   .listItem {
     float: left;
   }
-  
-.nameTitle {
-  font-family: "Ballet", serif;
-    font-weight: 400;
-    font-style: italic; 
-    font-size: 15px;
-    text-align: center;
-  margin-bottom: 105px; 
-  letter-spacing: 10px;
-  color:#333; 
-}
 
-.nameTitle:hover {
-  color: #A6CDC6;
-}
 
 .genBarContainer {
   display: flex;
@@ -162,6 +148,7 @@ background-position: 0 0;
   background-color: #A6CDC6;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 210px; 
 }
 
 .genBarContainer input[type="text"] {

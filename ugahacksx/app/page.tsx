@@ -58,10 +58,6 @@ export default function Home() {
         <input type="text" placeholder="Generate sounds..." />
         <button onClick={handleGenerateSound} type="button">Submit</button>
       </div>
-
-      <div className={styles.nameTitle}>
-        <h1> Sona </h1>
-      </div>
       
       </div>
 
